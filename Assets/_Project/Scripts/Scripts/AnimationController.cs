@@ -13,7 +13,7 @@ public class AnimationController : MonoBehaviour
     {
         if (_instance != null && _instance != this)
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
         else
         {

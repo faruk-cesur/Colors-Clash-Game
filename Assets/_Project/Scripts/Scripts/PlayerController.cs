@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 
@@ -11,9 +13,24 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private Transform _playerModel;
 
+    [SerializeField] private GameObject _stackedPlayer;
+
     private bool _isPlayerInteract;
+    private bool _isFirstLineCreated;
+
+    private float _newLinePositionX = -1f;
+    private float _newLinePositionZ = -2f;
+    private float _currentLinePositionX;
+    private int _stackHolder;
+    private int _stackNumber;
+    [SerializeField] private List<GameObject> _stackPlayerList;
 
     #endregion
+
+    private void Start()
+    {
+        _currentLinePositionX = _newLinePositionX;
+    }
 
     private void Update()
     {
@@ -84,6 +101,35 @@ public class PlayerController : MonoBehaviour
             //Instantiate(particleCollectable, playerModel.transform.position + new Vector3(0, 2, 0), Quaternion.identity);
             SoundManager.Instance.PlaySound(SoundManager.Instance.collectableSound, 0.4f);
             Destroy(other.gameObject);
+
+            GameObject stackPlayer = Instantiate(_stackedPlayer, transform.position, transform.rotation);
+            stackPlayer.transform.SetParent(this.transform);
+            
+            _stackPlayerList.Add(stackPlayer);
+            _stackNumber++;
+
+            stackPlayer.transform.DOLocalMove(new Vector3(_currentLinePositionX, stackPlayer.transform.position.y, _newLinePositionZ), 1.5f);
+
+            _currentLinePositionX += 1f;
+
+            if (_stackNumber == 3 && !_isFirstLineCreated)
+            {
+                _isFirstLineCreated = true;
+                _newLinePositionX -= 1f;
+                _newLinePositionZ -= 2f;
+                _currentLinePositionX = _newLinePositionX;
+                _stackHolder = _stackNumber;
+                _stackNumber = 0;
+            }
+
+            if (_stackNumber == _stackHolder + 2 && _stackNumber != 2)
+            {
+                _newLinePositionX -= 1f;
+                _newLinePositionZ -= 2f;
+                _currentLinePositionX = _newLinePositionX;
+                _stackHolder = _stackNumber;
+                _stackNumber = 0;
+            }
         }
     }
 
