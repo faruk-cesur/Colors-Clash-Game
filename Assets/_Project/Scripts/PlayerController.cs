@@ -103,6 +103,8 @@ public class PlayerController : MonoBehaviour
             Destroy(other.gameObject);
 
             GameObject stackPlayer = Instantiate(_stackedPlayer, transform.position, transform.rotation);
+            stackPlayer.transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
+            stackPlayer.transform.DOScale(new Vector3(1, 1, 1), 1);
             stackPlayer.transform.SetParent(this.transform);
             
             _stackPlayerList.Add(stackPlayer);
