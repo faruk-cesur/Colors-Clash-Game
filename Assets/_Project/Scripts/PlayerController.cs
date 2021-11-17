@@ -145,11 +145,12 @@ public class PlayerController : MonoBehaviour
             _stackPlayerList[_stackPlayerList.Count-1].gameObject.transform.SetParent(null);
             _stackPlayerList[_stackPlayerList.Count-1].gameObject.GetComponent<PlayerStack>().PlayerStackDeath();
             _stackPlayerList[_stackPlayerList.Count-1].gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.color = Color.black;
-                //Destroy(_stackPlayerList[_stackPlayerList.Count-1]);
+            Destroy(_stackPlayerList[_stackPlayerList.Count-1],2f);
             _stackPlayerList.RemoveAt(_stackPlayerList.Count - 1);
             _stackNumber--;
             _stackHolder = _stackNumber;
             _currentLinePositionX -= 1f;
+            
             CameraManager.Instance.mainGameCam.GetComponent<CinemachineVirtualCamera>().m_Lens.FieldOfView -= 0.2f;
 
             
