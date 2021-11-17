@@ -102,7 +102,7 @@ public class PlayerController : MonoBehaviour
             //Instantiate(particleCollectable, playerModel.transform.position + new Vector3(0, 2, 0), Quaternion.identity);
             SoundManager.Instance.PlaySound(SoundManager.Instance.collectableSound, 0.4f);
 
-            GameObject stackPlayer = Instantiate(_stackedPlayer, transform.position, transform.rotation);
+            GameObject stackPlayer = Instantiate(_stackedPlayer, _playerModel.transform.position, _playerModel.transform.rotation);
             stackPlayer.transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
             stackPlayer.transform.DOScale(new Vector3(1, 1, 1), 1);
             stackPlayer.transform.SetParent(_playerModel.transform);
