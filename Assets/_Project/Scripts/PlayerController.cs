@@ -130,6 +130,7 @@ public class PlayerController : MonoBehaviour
                 _currentLinePositionX = _newLinePositionX;
                 _stackHolder = _stackNumber;
                 _stackNumber = 0;
+                CameraManager.Cam.fieldOfView++;
             }
         }
 
@@ -140,6 +141,7 @@ public class PlayerController : MonoBehaviour
             _stackPlayerList[_stackPlayerList.Count-1].gameObject.transform.SetParent(null);
             //Destroy(_stackPlayerList[_stackPlayerList.Count-1]);
             _stackPlayerList.RemoveAt(_stackPlayerList.Count - 1);
+            
         }
     }
 
