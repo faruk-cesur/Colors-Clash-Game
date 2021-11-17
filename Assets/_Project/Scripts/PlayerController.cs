@@ -100,12 +100,11 @@ public class PlayerController : MonoBehaviour
             UIManager.Instance.gold++;
             //Instantiate(particleCollectable, playerModel.transform.position + new Vector3(0, 2, 0), Quaternion.identity);
             SoundManager.Instance.PlaySound(SoundManager.Instance.collectableSound, 0.4f);
-            Destroy(other.gameObject);
 
             GameObject stackPlayer = Instantiate(_stackedPlayer, transform.position, transform.rotation);
             stackPlayer.transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
             stackPlayer.transform.DOScale(new Vector3(1, 1, 1), 1);
-            stackPlayer.transform.SetParent(this.transform);
+            stackPlayer.transform.SetParent(_playerModel.transform);
             
             _stackPlayerList.Add(stackPlayer);
             _stackNumber++;
@@ -132,6 +131,15 @@ public class PlayerController : MonoBehaviour
                 _stackHolder = _stackNumber;
                 _stackNumber = 0;
             }
+        }
+
+        Obstacle obstacle = other.GetComponentInParent<Obstacle>();
+
+        if (obstacle)
+        {
+            _stackPlayerList[_stackPlayerList.Count-1].gameObject.transform.SetParent(null);
+            //Destroy(_stackPlayerList[_stackPlayerList.Count-1]);
+            _stackPlayerList.RemoveAt(_stackPlayerList.Count - 1);
         }
     }
 

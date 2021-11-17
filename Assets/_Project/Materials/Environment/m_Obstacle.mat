@@ -121,7 +121,7 @@ Material:
     - _GlossyReflections: 1
     - _LightCuts: 3
     - _LightModel: 1
-    - _LightSmoothness: 0.938
+    - _LightSmoothness: 1
     - _LightThreshold: 0.447
     - _LightType: 1
     - _MKEditorShowDetailBehavior: 0
@@ -177,7 +177,7 @@ Material:
     - _UseUIAlphaClip: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 1, g: 0, b: 0, a: 1}
+    - _Color: {r: 0, g: 0, b: 0, a: 1}
     - _DetailColor: {r: 1, g: 1, b: 1, a: 1}
     - _DissolveColor: {r: 1, g: 1, b: 1, a: 0.5}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
