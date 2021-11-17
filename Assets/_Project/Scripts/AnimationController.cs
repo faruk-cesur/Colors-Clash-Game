@@ -7,13 +7,11 @@ public class AnimationController : MonoBehaviour
     private static AnimationController _instance;
     public static AnimationController Instance => _instance;
 
-    [SerializeField] private Animator _animator;
-
     private void Awake()
     {
         if (_instance != null && _instance != this)
         {
-            //Destroy(gameObject);
+            Destroy(gameObject);
         }
         else
         {
@@ -21,27 +19,27 @@ public class AnimationController : MonoBehaviour
         }
     }
 
-    public void IdleAnimation()
+    public void IdleAnimation(Animator animator)
     {
-        _animator.SetBool("Idle", true);
-        _animator.SetBool("Run", false);
+        animator.SetBool("Idle", true);
+        animator.SetBool("Run", false);
     }
 
-    public void RunAnimation()
+    public void RunAnimation(Animator animator)
     {
-        _animator.SetBool("Idle", false);
-        _animator.SetBool("Run", true);
+        animator.SetBool("Idle", false);
+        animator.SetBool("Run", true);
     }
 
-    public void DeathAnimation()
+    public void DeathAnimation(Animator animator)
     {
-        _animator.SetBool("Run", false);
-        _animator.SetBool("Death", true);
+        animator.SetBool("Run", false);
+        animator.SetBool("Death", true);
     }
 
-    public void WinAnimation()
+    public void WinAnimation(Animator animator)
     {
-        _animator.SetBool("Run", false);
-        _animator.SetBool("Win", true);
+        animator.SetBool("Run", false);
+        animator.SetBool("Win", true);
     }
 }

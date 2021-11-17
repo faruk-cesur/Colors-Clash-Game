@@ -58,7 +58,6 @@ public class GameManager : MonoBehaviour
         CurrentGameState = GameState.MainGame;
         UIManager.Instance.MainGameUI();
         CameraManager.Instance.MainGameCamera();
-        AnimationController.Instance.RunAnimation();
     }
 
     public void RestartGame()

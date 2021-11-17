@@ -805,7 +805,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6064405784601580205}
   - component: {fileID: 6064405784611437921}
-  - component: {fileID: 2551605249751308307}
+  - component: {fileID: 3214866030376666502}
   m_Layer: 0
   m_Name: Stickman
   m_TagString: Untagged
@@ -839,7 +839,7 @@ Animator:
   m_GameObject: {fileID: 6064405784602070735}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: fa7f36c71b9e8fa4798df3a931c2fd92, type: 3}
-  m_Controller: {fileID: 9100000, guid: d3d4674ddb5a38e42bfdc481576124d3, type: 2}
+  m_Controller: {fileID: 9100000, guid: dbe9f460fdf6e45538365b93fc048fff, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -848,7 +848,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &2551605249751308307
+--- !u!114 &3214866030376666502
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -857,7 +857,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6064405784602070735}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa59ff3b42164b5eabd99748857fbf25, type: 3}
+  m_Script: {fileID: 11500000, guid: 3ac389cf5997433183d5ad83456df214, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 6064405784611437921}

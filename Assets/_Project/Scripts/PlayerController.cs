@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private GameObject _stackedPlayer;
 
+    [SerializeField] private Animator _animator;
+
     private bool _isPlayerInteract;
     private bool _isFirstLineCreated;
 
@@ -38,15 +40,17 @@ public class PlayerController : MonoBehaviour
         switch (GameManager.Instance.CurrentGameState)
         {
             case GameState.PrepareGame:
-                AnimationController.Instance.IdleAnimation();
+                AnimationController.Instance.IdleAnimation(_animator);
                 break;
             case GameState.MainGame:
                 ForwardMovement();
                 SwerveMovement();
+                AnimationController.Instance.RunAnimation(_animator);
                 break;
             case GameState.LoseGame:
                 break;
             case GameState.WinGame:
+                AnimationController.Instance.WinAnimation(_animator);
                 break;
             default:
                 throw new ArgumentOutOfRangeException();
@@ -141,6 +145,9 @@ public class PlayerController : MonoBehaviour
             _stackPlayerList[_stackPlayerList.Count-1].gameObject.transform.SetParent(null);
             //Destroy(_stackPlayerList[_stackPlayerList.Count-1]);
             _stackPlayerList.RemoveAt(_stackPlayerList.Count - 1);
+            _stackNumber--;
+            _stackHolder = _stackNumber;
+            _currentLinePositionX -= 1f;
             CameraManager.Instance.mainGameCam.GetComponent<CinemachineVirtualCamera>().m_Lens.FieldOfView -= 0.2f;
 
             
@@ -161,7 +168,7 @@ public class PlayerController : MonoBehaviour
     {
         _runSpeed = 0;
         GameManager.Instance.LoseGame();
-        AnimationController.Instance.DeathAnimation();
+        AnimationController.Instance.DeathAnimation(_animator);
         StartCoroutine(SoundManager.Instance.LoseGameSound());
         GameManager.Instance.CurrentGameState = GameState.LoseGame;
         _isPlayerInteract = true;

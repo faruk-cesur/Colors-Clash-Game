@@ -13,7 +13,6 @@ public class Finish : MonoBehaviour
         {
             player.PlayerSpeedDown();
             PlayerPrefs.SetInt("TotalGold", UIManager.Instance.gold + PlayerPrefs.GetInt("TotalGold"));
-            AnimationController.Instance.WinAnimation();
             UIManager.Instance.UpdateGoldInfo();
             GameManager.Instance.WinGame();
             GameManager.Instance.CurrentGameState = GameState.WinGame;
