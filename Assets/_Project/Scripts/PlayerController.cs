@@ -148,9 +148,16 @@ public class PlayerController : MonoBehaviour
             Destroy(_stackPlayerList[_stackPlayerList.Count-1],2f);
             _stackPlayerList.RemoveAt(_stackPlayerList.Count - 1);
             _stackNumber--;
-            _stackHolder = _stackNumber;
             _currentLinePositionX -= 1f;
             
+            if (_stackNumber == _stackHolder - 3 && _stackNumber != 2)
+            {
+                _newLinePositionX += 1f;
+                _newLinePositionZ += 2f;
+                _currentLinePositionX = _newLinePositionX;
+                _stackHolder = _stackNumber;
+                _stackNumber = 0;
+            }
             CameraManager.Instance.mainGameCam.GetComponent<CinemachineVirtualCamera>().m_Lens.FieldOfView -= 0.2f;
 
             
