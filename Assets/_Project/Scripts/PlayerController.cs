@@ -143,7 +143,9 @@ public class PlayerController : MonoBehaviour
         if (obstacle)
         {
             _stackPlayerList[_stackPlayerList.Count-1].gameObject.transform.SetParent(null);
-            //Destroy(_stackPlayerList[_stackPlayerList.Count-1]);
+            _stackPlayerList[_stackPlayerList.Count-1].gameObject.GetComponent<PlayerStack>().PlayerStackDeath();
+            _stackPlayerList[_stackPlayerList.Count-1].gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.color = Color.black;
+                //Destroy(_stackPlayerList[_stackPlayerList.Count-1]);
             _stackPlayerList.RemoveAt(_stackPlayerList.Count - 1);
             _stackNumber--;
             _stackHolder = _stackNumber;
