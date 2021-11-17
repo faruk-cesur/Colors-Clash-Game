@@ -139,8 +139,7 @@ public class UIManager : MonoBehaviour
 
     public void RetryButton()
     {
-        Scene currentScene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(currentScene.buildIndex);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void NextLevelButton()

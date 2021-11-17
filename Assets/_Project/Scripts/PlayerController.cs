@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _runSpeed, _slideSpeed, _maxSlideAmount;
 
     [SerializeField] private Transform _playerModel;
+    [SerializeField] private Transform _playerModelStickman;
 
     [SerializeField] private GameObject _stackedPlayer;
 
@@ -51,6 +52,7 @@ public class PlayerController : MonoBehaviour
                 break;
             case GameState.WinGame:
                 AnimationController.Instance.WinAnimation(_animator);
+                _playerModelStickman.transform.rotation = Quaternion.Euler(0,180,0);
                 break;
             default:
                 throw new ArgumentOutOfRangeException();
