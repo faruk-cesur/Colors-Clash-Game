@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using DG.Tweening;
 using UnityEngine;
 
@@ -110,8 +111,8 @@ public class PlayerController : MonoBehaviour
             _stackNumber++;
 
             stackPlayer.transform.DOLocalMove(new Vector3(_currentLinePositionX, stackPlayer.transform.position.y, _newLinePositionZ), 1.5f);
-
             _currentLinePositionX += 1f;
+            CameraManager.Instance.mainGameCam.GetComponent<CinemachineVirtualCamera>().m_Lens.FieldOfView += 0.2f;
 
             if (_stackNumber == 3 && !_isFirstLineCreated)
             {
@@ -130,7 +131,6 @@ public class PlayerController : MonoBehaviour
                 _currentLinePositionX = _newLinePositionX;
                 _stackHolder = _stackNumber;
                 _stackNumber = 0;
-                CameraManager.Cam.fieldOfView++;
             }
         }
 
@@ -141,6 +141,8 @@ public class PlayerController : MonoBehaviour
             _stackPlayerList[_stackPlayerList.Count-1].gameObject.transform.SetParent(null);
             //Destroy(_stackPlayerList[_stackPlayerList.Count-1]);
             _stackPlayerList.RemoveAt(_stackPlayerList.Count - 1);
+            CameraManager.Instance.mainGameCam.GetComponent<CinemachineVirtualCamera>().m_Lens.FieldOfView -= 0.2f;
+
             
         }
     }
