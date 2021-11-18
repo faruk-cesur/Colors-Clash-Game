@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
     private bool _isPlayerInteract;
     private bool _isFirstLineCreated;
 
-    private float _newLinePositionX = -1f;
+    private float _newLinePositionX = -0.7f;
     private float _newLinePositionZ = -2f;
     private float _currentLinePositionX;
     private int _stackHolder;
@@ -101,12 +101,11 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Collectable collectable = other.GetComponentInParent<Collectable>();
-        if (collectable)
+        for (int i = 0; i < 2; i++)
         {
-            for (int i = 0; i < 2; i++)
+            Collectable collectable = other.GetComponentInParent<Collectable>();
+            if (collectable)
             {
-                Taptic.Light();
                 UIManager.Instance.gold++;
                 GameObject stackPlayer = Instantiate(_stackedPlayer, _playerModel.transform.position, _playerModel.transform.rotation);
                 stackPlayer.transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
@@ -149,13 +148,12 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            Obstacle obstacle = other.GetComponentInParent<Obstacle>();
-
-            if (obstacle)
+            for (int i = 0; i < 2; i++)
             {
-                for (int i = 0; i < 2; i++)
+                Obstacle obstacle = other.GetComponentInParent<Obstacle>();
+
+                if (obstacle)
                 {
-                    Taptic.Heavy();
                     _stackPlayerList[_stackPlayerList.Count - 1].gameObject.transform.SetParent(null);
                     _stackPlayerList[_stackPlayerList.Count - 1].gameObject.GetComponent<PlayerStack>().PlayerStackDeath();
                     _stackPlayerList[_stackPlayerList.Count - 1].gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.color = Color.black;
@@ -163,6 +161,7 @@ public class PlayerController : MonoBehaviour
                     _stackPlayerList.RemoveAt(_stackPlayerList.Count - 1);
                     _stackNumber--;
                     _currentLinePositionX -= 0.7f;
+
 
                     if (_stackNumber == -1)
                     {
