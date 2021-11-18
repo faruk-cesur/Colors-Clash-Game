@@ -9200,7 +9200,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _runSpeed: 15
-  _slideSpeed: 8
+  _slideSpeed: 16
   _maxSlideAmount: 7.5
   _playerModel: {fileID: 13011116200233782}
   _playerModelStickman: {fileID: 8605884176611232390}
@@ -18870,7 +18870,7 @@ PrefabInstance:
     - target: {fileID: 8692508052356593385, guid: e072c4ed8144e41478848bca0942fb1c,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 700
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 8692508052356593385, guid: e072c4ed8144e41478848bca0942fb1c,
         type: 3}

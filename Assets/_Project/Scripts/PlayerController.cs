@@ -104,64 +104,78 @@ public class PlayerController : MonoBehaviour
         Collectable collectable = other.GetComponentInParent<Collectable>();
         if (collectable)
         {
-            UIManager.Instance.gold++;
-            //Instantiate(particleCollectable, playerModel.transform.position + new Vector3(0, 2, 0), Quaternion.identity);
-            SoundManager.Instance.PlaySound(SoundManager.Instance.collectableSound, 0.4f);
-
-            GameObject stackPlayer = Instantiate(_stackedPlayer, _playerModel.transform.position, _playerModel.transform.rotation);
-            stackPlayer.transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
-            stackPlayer.transform.DOScale(new Vector3(1, 1, 1), 1);
-            stackPlayer.transform.SetParent(_playerModel.transform);
-
-            _stackPlayerList.Add(stackPlayer);
-            _stackNumber++;
-
-            stackPlayer.transform.DOLocalMove(new Vector3(_currentLinePositionX, stackPlayer.transform.position.y, _newLinePositionZ), 1.5f);
-            _currentLinePositionX += 1f;
-            CameraManager.Instance.mainGameCam.GetComponent<CinemachineVirtualCamera>().m_Lens.FieldOfView += 0.2f;
-
-            if (_stackNumber == 3 && !_isFirstLineCreated)
+            for (int i = 0; i < 2; i++)
             {
-                _isFirstLineCreated = true;
-                _newLinePositionX -= 1f;
-                _newLinePositionZ -= 2f;
-                _currentLinePositionX = _newLinePositionX;
-                _stackHolder = _stackNumber;
-                _stackNumber = 0;
-            }
+                Taptic.Light();
+                UIManager.Instance.gold++;
+                GameObject stackPlayer = Instantiate(_stackedPlayer, _playerModel.transform.position, _playerModel.transform.rotation);
+                stackPlayer.transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
+                stackPlayer.transform.DOScale(new Vector3(2f, 2f, 2f), 0.25f);
+                StartCoroutine(PlayerScaleCountDown(stackPlayer));
 
-            if (_stackNumber == _stackHolder + 2 && _stackNumber != 2)
-            {
-                _newLinePositionX -= 1f;
-                _newLinePositionZ -= 2f;
-                _currentLinePositionX = _newLinePositionX;
-                _stackHolder = _stackNumber;
-                _stackNumber = 0;
+                stackPlayer.transform.SetParent(_playerModel.transform);
+
+                _stackPlayerList.Add(stackPlayer);
+                _stackNumber++;
+
+                stackPlayer.transform.DOLocalMove(new Vector3(_currentLinePositionX, stackPlayer.transform.position.y, _newLinePositionZ), 0.25f);
+                _currentLinePositionX += 0.7f;
+                CameraManager.Instance.mainGameCam.GetComponent<CinemachineVirtualCamera>().m_Lens.FieldOfView += 0.2f;
+
+                if (_stackNumber == 3 && !_isFirstLineCreated)
+                {
+                    _isFirstLineCreated = true;
+                    _newLinePositionX -= 0.7f;
+                    _newLinePositionZ -= 2f;
+                    _currentLinePositionX = _newLinePositionX;
+                    _stackHolder = _stackNumber;
+                    _stackNumber = 0;
+                }
+
+                if (_stackNumber == _stackHolder + 2 && _stackNumber != 2)
+                {
+                    _newLinePositionX -= 0.7f;
+                    _newLinePositionZ -= 2f;
+                    _currentLinePositionX = _newLinePositionX;
+                    _stackHolder = _stackNumber;
+                    _stackNumber = 0;
+                }
             }
         }
 
-        Obstacle obstacle = other.GetComponentInParent<Obstacle>();
-
-        if (obstacle)
+        if (_stackPlayerList.Count == 0)
         {
-            _stackPlayerList[_stackPlayerList.Count - 1].gameObject.transform.SetParent(null);
-            _stackPlayerList[_stackPlayerList.Count - 1].gameObject.GetComponent<PlayerStack>().PlayerStackDeath();
-            _stackPlayerList[_stackPlayerList.Count - 1].gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.color = Color.black;
-            Destroy(_stackPlayerList[_stackPlayerList.Count - 1], 2f);
-            _stackPlayerList.RemoveAt(_stackPlayerList.Count - 1);
-            _stackNumber--;
-            _currentLinePositionX -= 1f;
+            return;
+        }
+        else
+        {
+            Obstacle obstacle = other.GetComponentInParent<Obstacle>();
 
-            if (_stackNumber == -1)
+            if (obstacle)
             {
-                _newLinePositionX += 1f;
-                _newLinePositionZ += 2f;
-                _currentLinePositionX = _newLinePositionX * -1;
-                _stackNumber = _stackHolder - 1;
-                _stackHolder -= 2;
-            }
+                for (int i = 0; i < 2; i++)
+                {
+                    Taptic.Heavy();
+                    _stackPlayerList[_stackPlayerList.Count - 1].gameObject.transform.SetParent(null);
+                    _stackPlayerList[_stackPlayerList.Count - 1].gameObject.GetComponent<PlayerStack>().PlayerStackDeath();
+                    _stackPlayerList[_stackPlayerList.Count - 1].gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.color = Color.black;
+                    Destroy(_stackPlayerList[_stackPlayerList.Count - 1], 2f);
+                    _stackPlayerList.RemoveAt(_stackPlayerList.Count - 1);
+                    _stackNumber--;
+                    _currentLinePositionX -= 0.7f;
 
-            CameraManager.Instance.mainGameCam.GetComponent<CinemachineVirtualCamera>().m_Lens.FieldOfView -= 0.2f;
+                    if (_stackNumber == -1)
+                    {
+                        _newLinePositionX += 0.7f;
+                        _newLinePositionZ += 2f;
+                        _currentLinePositionX = _newLinePositionX * -1;
+                        _stackNumber = _stackHolder - 1;
+                        _stackHolder -= 2;
+                    }
+
+                    CameraManager.Instance.mainGameCam.GetComponent<CinemachineVirtualCamera>().m_Lens.FieldOfView -= 0.2f;
+                }
+            }
         }
     }
 
@@ -213,6 +227,13 @@ public class PlayerController : MonoBehaviour
         _isPlayerInteract = true;
         yield return new WaitForSeconds(1f);
         _isPlayerInteract = false;
+    }
+
+
+    private IEnumerator PlayerScaleCountDown(GameObject stackPlayer)
+    {
+        yield return new WaitForSeconds(0.15f);
+        stackPlayer.transform.DOScale(new Vector3(1, 1, 1), 0.25f);
     }
 
     #endregion
