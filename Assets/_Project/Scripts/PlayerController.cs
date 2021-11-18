@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour
                 break;
             case GameState.WinGame:
                 AnimationController.Instance.WinAnimation(_animator);
-                _playerModelStickman.transform.rotation = Quaternion.Euler(0,180,0);
+                _playerModelStickman.transform.rotation = Quaternion.Euler(0, 180, 0);
                 break;
             default:
                 throw new ArgumentOutOfRangeException();
@@ -112,7 +112,7 @@ public class PlayerController : MonoBehaviour
             stackPlayer.transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
             stackPlayer.transform.DOScale(new Vector3(1, 1, 1), 1);
             stackPlayer.transform.SetParent(_playerModel.transform);
-            
+
             _stackPlayerList.Add(stackPlayer);
             _stackNumber++;
 
@@ -144,25 +144,24 @@ public class PlayerController : MonoBehaviour
 
         if (obstacle)
         {
-            _stackPlayerList[_stackPlayerList.Count-1].gameObject.transform.SetParent(null);
-            _stackPlayerList[_stackPlayerList.Count-1].gameObject.GetComponent<PlayerStack>().PlayerStackDeath();
-            _stackPlayerList[_stackPlayerList.Count-1].gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.color = Color.black;
-            Destroy(_stackPlayerList[_stackPlayerList.Count-1],2f);
+            _stackPlayerList[_stackPlayerList.Count - 1].gameObject.transform.SetParent(null);
+            _stackPlayerList[_stackPlayerList.Count - 1].gameObject.GetComponent<PlayerStack>().PlayerStackDeath();
+            _stackPlayerList[_stackPlayerList.Count - 1].gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.color = Color.black;
+            Destroy(_stackPlayerList[_stackPlayerList.Count - 1], 2f);
             _stackPlayerList.RemoveAt(_stackPlayerList.Count - 1);
             _stackNumber--;
             _currentLinePositionX -= 1f;
-            
-            if (_stackNumber == _stackHolder - 3 && _stackNumber != 2)
+
+            if (_stackNumber == -1)
             {
                 _newLinePositionX += 1f;
                 _newLinePositionZ += 2f;
-                _currentLinePositionX = _newLinePositionX;
-                _stackHolder = _stackNumber;
-                _stackNumber = 0;
+                _currentLinePositionX = _newLinePositionX * -1;
+                _stackNumber = _stackHolder - 1;
+                _stackHolder -= 2;
             }
-            CameraManager.Instance.mainGameCam.GetComponent<CinemachineVirtualCamera>().m_Lens.FieldOfView -= 0.2f;
 
-            
+            CameraManager.Instance.mainGameCam.GetComponent<CinemachineVirtualCamera>().m_Lens.FieldOfView -= 0.2f;
         }
     }
 
