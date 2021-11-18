@@ -806,7 +806,8 @@ GameObject:
   - component: {fileID: 6064405784601580205}
   - component: {fileID: 6064405784611437921}
   - component: {fileID: 3214866030376666502}
-  m_Layer: 0
+  - component: {fileID: 5233664803552751673}
+  m_Layer: 6
   m_Name: Stickman
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -861,6 +862,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 6064405784611437921}
+--- !u!136 &5233664803552751673
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6064405784602070735}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.4
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &6064405784602070737
 GameObject:
   m_ObjectHideFlags: 0
