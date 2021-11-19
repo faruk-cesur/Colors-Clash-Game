@@ -175,6 +175,18 @@ public class PlayerController : MonoBehaviour
                     CameraManager.Instance.mainGameCam.GetComponent<CinemachineVirtualCamera>().m_Lens.FieldOfView -= 0.2f;
                 }
             }
+
+            Trap trap = other.GetComponentInParent<Trap>();
+
+            if (trap)
+            {
+                gameObject.GetComponentInChildren<PlayerStack>().gameObject.transform.SetParent(null);
+                gameObject.GetComponentInChildren<PlayerStack>().gameObject.GetComponent<PlayerStack>().PlayerStackDeath();
+                gameObject.GetComponentInChildren<PlayerStack>().gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.color = Color.black;
+                //(Destroy(_stackPlayerList.Find(gameObject.GetComponentInChildren<PlayerStack>().gameObject), 2f);
+                _stackPlayerList.Remove(gameObject.GetComponentInChildren<PlayerStack>().gameObject);
+
+            }
         }
     }
     
