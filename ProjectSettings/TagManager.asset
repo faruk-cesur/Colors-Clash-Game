@@ -11,10 +11,10 @@ TagManager:
   - 
   - Water
   - UI
-  - cocuk
-  - yer
-  - 
-  - 
+  - PlayerStack
+  - Collectable
+  - Obstacle
+  - Death
   - 
   - 
   - 
