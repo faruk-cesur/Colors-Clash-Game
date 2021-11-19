@@ -14,7 +14,7 @@ TagManager:
   - PlayerStack
   - Collectable
   - Obstacle
-  - Death
+  - Trap
   - 
   - 
   - 

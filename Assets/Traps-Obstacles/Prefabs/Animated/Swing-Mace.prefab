@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 8941697902379635196}
   - component: {fileID: 6113922950990177641}
   - component: {fileID: 2905027297104526942}
-  m_Layer: 0
+  - component: {fileID: 8932377780843207343}
+  m_Layer: 9
   m_Name: Obstacle 2.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,6 +56,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -80,6 +82,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!135 &8932377780843207343
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2029324404044211199}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.31853437
+  m_Center: {x: -0.00025460124, y: -0.015545115, z: -0.00007453561}
 --- !u!1 &3438957857848151155
 GameObject:
   m_ObjectHideFlags: 0
@@ -135,6 +151,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -159,6 +176,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &4645515504845089995
 GameObject:
   m_ObjectHideFlags: 0
@@ -215,6 +233,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -239,6 +258,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &7641293651057028990
 GameObject:
   m_ObjectHideFlags: 0
@@ -249,8 +269,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7007746961113871812}
   - component: {fileID: 7406800460945882355}
+  - component: {fileID: -6117310504743702947}
   m_Layer: 0
-  m_Name: Obstacle-2-1
+  m_Name: Swing-Mace
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -265,7 +286,7 @@ Transform:
   m_GameObject: {fileID: 7641293651057028990}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children:
   - {fileID: 4284715333084286490}
   - {fileID: 8507121871090282444}
@@ -291,3 +312,15 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-6117310504743702947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7641293651057028990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85cc2939bf6c441239c2c84677e0f6f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

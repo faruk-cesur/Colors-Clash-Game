@@ -14,4 +14,14 @@ public class PlayerStack : MonoBehaviour
     {
         AnimationController.Instance.DeathAnimation(_animator);
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Trap trap = other.GetComponentInParent<Trap>();
+
+        if (trap)
+        {
+            Destroy(gameObject);
+        }
+    }
 }

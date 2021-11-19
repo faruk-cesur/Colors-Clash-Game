@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 5359210031483684821}
   - component: {fileID: 1809501713745489463}
   - component: {fileID: 584379950180414742}
-  m_Layer: 0
+  - component: {fileID: 835833862540521105}
+  m_Layer: 9
   m_Name: Cylinder.027
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,6 +56,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -79,6 +81,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &835833862540521105
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2166053135091505673}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.49995202, y: 0.06706351, z: 0.49995196}
+  m_Center: {x: 0.00000012665987, y: -0.0000003874302, z: 0.00000042840844}
 --- !u!1 &3150839043770824505
 GameObject:
   m_ObjectHideFlags: 0
@@ -136,6 +152,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -160,6 +177,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &8048301214254553427
 GameObject:
   m_ObjectHideFlags: 0
@@ -170,8 +188,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7276304055105520617}
   - component: {fileID: 7165269346867307885}
+  - component: {fileID: 9151055298672273812}
   m_Layer: 0
-  m_Name: Obstacle-7
+  m_Name: Spinning Saws
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -186,7 +205,7 @@ Transform:
   m_GameObject: {fileID: 8048301214254553427}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children:
   - {fileID: 5817949452922779644}
   - {fileID: 8115045831624973156}
@@ -212,6 +231,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &9151055298672273812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8048301214254553427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85cc2939bf6c441239c2c84677e0f6f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8387726832648461081
 GameObject:
   m_ObjectHideFlags: 0
@@ -223,7 +254,8 @@ GameObject:
   - component: {fileID: 7078892403548722572}
   - component: {fileID: 6287742495446755411}
   - component: {fileID: 3832862719918851220}
-  m_Layer: 0
+  - component: {fileID: 3632766785392761251}
+  m_Layer: 9
   m_Name: Cylinder.034
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -267,6 +299,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -291,6 +324,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &3632766785392761251
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8387726832648461081}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.49995208, y: 0.06706345, z: 0.49995196}
+  m_Center: {x: -0.000000029802322, y: 0.0000009536743, z: 0.0000003688038}
 --- !u!1 &8729104195628159493
 GameObject:
   m_ObjectHideFlags: 0
@@ -346,6 +393,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -372,3 +420,4 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
