@@ -22,12 +22,11 @@ public class PlayerStack : MonoBehaviour
 
         if (trap)
         {
+            player.stackGameObjectList.Remove(gameObject);
             gameObject.transform.SetParent(null);
             gameObject.GetComponent<PlayerStack>().PlayerStackDeath();
             gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.color = Color.black;
-
-
-            player.stackPlayerList.Remove(gameObject);
+            player.CalculateStackPositions();
         }
     }
 }

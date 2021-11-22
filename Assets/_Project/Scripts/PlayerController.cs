@@ -10,7 +10,8 @@ public class PlayerController : MonoBehaviour
 {
     #region Fields
 
-    public List<GameObject> stackPlayerList;
+    public List<GameObject> stackGameObjectList;
+    public List<Vector3> stackVectorList;
 
     [SerializeField] private float _runSpeed, _slideSpeed, _maxSlideAmount;
 
@@ -47,6 +48,7 @@ public class PlayerController : MonoBehaviour
             case GameState.MainGame:
                 ForwardMovement();
                 SwerveMovement();
+                MergeStackCrowd();
                 AnimationController.Instance.RunAnimation(_animator);
                 break;
             case GameState.LoseGame:
@@ -59,6 +61,7 @@ public class PlayerController : MonoBehaviour
                 throw new ArgumentOutOfRangeException();
         }
     }
+
 
     #region PlayerMovement
 
@@ -104,7 +107,7 @@ public class PlayerController : MonoBehaviour
     {
         for (int i = 0; i < 2; i++)
         {
-            Collectable collectable = other.GetComponentInParent<Collectable>();
+            Collectable collectable = other.GetComponent<Collectable>();
             if (collectable)
             {
                 UIManager.Instance.gold++;
@@ -115,8 +118,17 @@ public class PlayerController : MonoBehaviour
 
                 stackPlayer.transform.SetParent(_playerModel.transform);
 
-                stackPlayerList.Add(stackPlayer);
+
                 _stackNumber++;
+
+                stackPlayer.transform.localPosition = new Vector3(_currentLinePositionX, stackPlayer.transform.position.y, _newLinePositionZ);
+                if (stackGameObjectList.Count == stackVectorList.Count)
+                {
+                    stackVectorList.Add(stackPlayer.transform.localPosition);
+                }
+
+                stackGameObjectList.Add(stackPlayer);
+                stackPlayer.transform.position = _playerModel.transform.position;
 
                 stackPlayer.transform.DOLocalMove(new Vector3(_currentLinePositionX, stackPlayer.transform.position.y, _newLinePositionZ), 0.25f);
                 _currentLinePositionX += 0.7f;
@@ -143,7 +155,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (stackPlayerList.Count == 0)
+        if (stackGameObjectList.Count == 0)
         {
             return;
         }
@@ -151,15 +163,15 @@ public class PlayerController : MonoBehaviour
         {
             for (int i = 0; i < 2; i++)
             {
-                Obstacle obstacle = other.GetComponentInParent<Obstacle>();
+                Obstacle obstacle = other.GetComponent<Obstacle>();
 
                 if (obstacle)
                 {
-                    stackPlayerList[stackPlayerList.Count - 1].gameObject.transform.SetParent(null);
-                    stackPlayerList[stackPlayerList.Count - 1].gameObject.GetComponent<PlayerStack>().PlayerStackDeath();
-                    stackPlayerList[stackPlayerList.Count - 1].gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.color = Color.black;
-                    Destroy(stackPlayerList[stackPlayerList.Count - 1], 2f);
-                    stackPlayerList.RemoveAt(stackPlayerList.Count - 1);
+                    stackGameObjectList[stackGameObjectList.Count - 1].gameObject.transform.SetParent(null);
+                    stackGameObjectList[stackGameObjectList.Count - 1].gameObject.GetComponent<PlayerStack>().PlayerStackDeath();
+                    stackGameObjectList[stackGameObjectList.Count - 1].gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.color = Color.black;
+                    Destroy(stackGameObjectList[stackGameObjectList.Count - 1], 2f);
+                    stackGameObjectList.RemoveAt(stackGameObjectList.Count - 1);
                     _stackNumber--;
                     _currentLinePositionX -= 0.7f;
 
@@ -183,6 +195,35 @@ public class PlayerController : MonoBehaviour
 
 
     #region Methods
+
+    public void MergeStackCrowd()
+    {
+        for (int i = 0; i < stackGameObjectList.Count; i++)
+        {
+            if (stackGameObjectList[i].transform.localPosition != stackVectorList[i])
+            {
+                stackGameObjectList[i].transform.DOLocalMove(stackVectorList[i], 0.5f);
+            }
+        }
+    }
+
+    public void CalculateStackPositions()
+    {
+        _stackNumber--;
+        _currentLinePositionX -= 0.7f;
+
+
+        if (_stackNumber == -1)
+        {
+            _newLinePositionX += 0.7f;
+            _newLinePositionZ += 2f;
+            _currentLinePositionX = _newLinePositionX * -1;
+            _stackNumber = _stackHolder - 1;
+            _stackHolder -= 2;
+        }
+
+        CameraManager.Instance.mainGameCam.GetComponent<CinemachineVirtualCamera>().m_Lens.FieldOfView -= 0.2f;
+    }
 
     public void PlayerSpeedDown()
     {
