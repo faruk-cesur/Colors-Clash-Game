@@ -31,6 +31,8 @@ public class PlayerController : MonoBehaviour
     private int _stackHolder;
     private int _stackNumber;
 
+    
+    public List<GameObject> olen;
     #endregion
 
     private void Start()
@@ -48,7 +50,6 @@ public class PlayerController : MonoBehaviour
             case GameState.MainGame:
                 ForwardMovement();
                 SwerveMovement();
-                MergeStackCrowd();
                 AnimationController.Instance.RunAnimation(_animator);
                 break;
             case GameState.LoseGame:
@@ -62,6 +63,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+
+    private void LateUpdate()
+    {
+        MergeStackCrowd();
+    }
 
     #region PlayerMovement
 
@@ -198,11 +204,18 @@ public class PlayerController : MonoBehaviour
 
     public void MergeStackCrowd()
     {
-        for (int i = 0; i < stackGameObjectList.Count; i++)
+        foreach (var stack in stackGameObjectList)
         {
-            if (stackGameObjectList[i].transform.localPosition != stackVectorList[i])
+            for (int i = 0; i < stackGameObjectList.Count; i++)
             {
-                stackGameObjectList[i].transform.DOLocalMove(stackVectorList[i], 0.5f);
+                if (stackGameObjectList[i].transform.localPosition != stackVectorList[i] && !stackGameObjectList[i].GetComponent<PlayerStack>().aaa)
+                {
+                   // stackGameObjectList[i].transform.DOLocalMove(stackVectorList[i], 50f);
+                   stackGameObjectList[i].transform.localPosition = Vector3.MoveTowards(stackGameObjectList[i].transform.localPosition,new Vector3(stackVectorList[i].x,stackVectorList[i].y,stackVectorList[i].z
+                   ),0.5f * Time.deltaTime);
+                   
+                   
+                }
             }
         }
     }
