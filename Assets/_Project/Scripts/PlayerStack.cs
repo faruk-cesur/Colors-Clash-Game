@@ -15,13 +15,19 @@ public class PlayerStack : MonoBehaviour
         AnimationController.Instance.DeathAnimation(_animator);
     }
 
-    // private void OnTriggerEnter(Collider other)
-    // {
-    //     Trap trap = other.GetComponentInParent<Trap>();
-    //
-    //     if (trap)
-    //     {
-    //         Destroy(gameObject);
-    //     }
-    // }
+    public void OnTriggerEnter(Collider other)
+    {
+        Trap trap = other.GetComponentInParent<Trap>();
+        PlayerController player = GetComponentInParent<PlayerController>();
+
+        if (trap)
+        {
+            gameObject.transform.SetParent(null);
+            gameObject.GetComponent<PlayerStack>().PlayerStackDeath();
+            gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.color = Color.black;
+
+
+            player.stackPlayerList.Remove(gameObject);
+        }
+    }
 }

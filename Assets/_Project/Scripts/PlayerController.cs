@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
 {
     #region Fields
 
+    public List<GameObject> stackPlayerList;
+
     [SerializeField] private float _runSpeed, _slideSpeed, _maxSlideAmount;
 
     [SerializeField] private Transform _playerModel;
@@ -27,7 +29,6 @@ public class PlayerController : MonoBehaviour
     private float _currentLinePositionX;
     private int _stackHolder;
     private int _stackNumber;
-    [SerializeField] private List<GameObject> _stackPlayerList;
 
     #endregion
 
@@ -114,7 +115,7 @@ public class PlayerController : MonoBehaviour
 
                 stackPlayer.transform.SetParent(_playerModel.transform);
 
-                _stackPlayerList.Add(stackPlayer);
+                stackPlayerList.Add(stackPlayer);
                 _stackNumber++;
 
                 stackPlayer.transform.DOLocalMove(new Vector3(_currentLinePositionX, stackPlayer.transform.position.y, _newLinePositionZ), 0.25f);
@@ -142,7 +143,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (_stackPlayerList.Count == 0)
+        if (stackPlayerList.Count == 0)
         {
             return;
         }
@@ -154,11 +155,11 @@ public class PlayerController : MonoBehaviour
 
                 if (obstacle)
                 {
-                    _stackPlayerList[_stackPlayerList.Count - 1].gameObject.transform.SetParent(null);
-                    _stackPlayerList[_stackPlayerList.Count - 1].gameObject.GetComponent<PlayerStack>().PlayerStackDeath();
-                    _stackPlayerList[_stackPlayerList.Count - 1].gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.color = Color.black;
-                    Destroy(_stackPlayerList[_stackPlayerList.Count - 1], 2f);
-                    _stackPlayerList.RemoveAt(_stackPlayerList.Count - 1);
+                    stackPlayerList[stackPlayerList.Count - 1].gameObject.transform.SetParent(null);
+                    stackPlayerList[stackPlayerList.Count - 1].gameObject.GetComponent<PlayerStack>().PlayerStackDeath();
+                    stackPlayerList[stackPlayerList.Count - 1].gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.color = Color.black;
+                    Destroy(stackPlayerList[stackPlayerList.Count - 1], 2f);
+                    stackPlayerList.RemoveAt(stackPlayerList.Count - 1);
                     _stackNumber--;
                     _currentLinePositionX -= 0.7f;
 
@@ -175,21 +176,9 @@ public class PlayerController : MonoBehaviour
                     CameraManager.Instance.mainGameCam.GetComponent<CinemachineVirtualCamera>().m_Lens.FieldOfView -= 0.2f;
                 }
             }
-
-            Trap trap = other.GetComponentInParent<Trap>();
-
-            if (trap)
-            {
-                gameObject.GetComponentInChildren<PlayerStack>().gameObject.transform.SetParent(null);
-                gameObject.GetComponentInChildren<PlayerStack>().gameObject.GetComponent<PlayerStack>().PlayerStackDeath();
-                gameObject.GetComponentInChildren<PlayerStack>().gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.color = Color.black;
-                //(Destroy(_stackPlayerList.Find(gameObject.GetComponentInChildren<PlayerStack>().gameObject), 2f);
-                _stackPlayerList.Remove(gameObject.GetComponentInChildren<PlayerStack>().gameObject);
-
-            }
         }
     }
-    
+
     #endregion
 
 
