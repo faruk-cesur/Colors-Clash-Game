@@ -31,8 +31,6 @@ public class PlayerController : MonoBehaviour
     private int _stackHolder;
     private int _stackNumber;
 
-    
-    public List<GameObject> olen;
     #endregion
 
     private void Start()
@@ -62,7 +60,6 @@ public class PlayerController : MonoBehaviour
                 throw new ArgumentOutOfRangeException();
         }
     }
-
 
     private void LateUpdate()
     {
@@ -121,23 +118,25 @@ public class PlayerController : MonoBehaviour
                 stackPlayer.transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
                 stackPlayer.transform.DOScale(new Vector3(2f, 2f, 2f), 0.25f);
                 StartCoroutine(PlayerScaleCountDown(stackPlayer));
-
                 stackPlayer.transform.SetParent(_playerModel.transform);
-
 
                 _stackNumber++;
 
                 stackPlayer.transform.localPosition = new Vector3(_currentLinePositionX, stackPlayer.transform.position.y, _newLinePositionZ);
+
                 if (stackGameObjectList.Count == stackVectorList.Count)
                 {
                     stackVectorList.Add(stackPlayer.transform.localPosition);
                 }
 
                 stackGameObjectList.Add(stackPlayer);
+
                 stackPlayer.transform.position = _playerModel.transform.position;
 
                 stackPlayer.transform.DOLocalMove(new Vector3(_currentLinePositionX, stackPlayer.transform.position.y, _newLinePositionZ), 0.25f);
+
                 _currentLinePositionX += 0.7f;
+
                 CameraManager.Instance.mainGameCam.GetComponent<CinemachineVirtualCamera>().m_Lens.FieldOfView += 0.2f;
 
                 if (_stackNumber == 3 && !_isFirstLineCreated)
@@ -208,13 +207,9 @@ public class PlayerController : MonoBehaviour
         {
             for (int i = 0; i < stackGameObjectList.Count; i++)
             {
-                if (stackGameObjectList[i].transform.localPosition != stackVectorList[i] && !stackGameObjectList[i].GetComponent<PlayerStack>().aaa)
+                if (stackGameObjectList[i].transform.localPosition != stackVectorList[i])
                 {
-                   // stackGameObjectList[i].transform.DOLocalMove(stackVectorList[i], 50f);
-                   stackGameObjectList[i].transform.localPosition = Vector3.MoveTowards(stackGameObjectList[i].transform.localPosition,new Vector3(stackVectorList[i].x,stackVectorList[i].y,stackVectorList[i].z
-                   ),0.5f * Time.deltaTime);
-                   
-                   
+                    stackGameObjectList[i].transform.localPosition = Vector3.MoveTowards(stackGameObjectList[i].transform.localPosition, stackVectorList[i], 0.5f * Time.deltaTime);
                 }
             }
         }
@@ -224,7 +219,6 @@ public class PlayerController : MonoBehaviour
     {
         _stackNumber--;
         _currentLinePositionX -= 0.7f;
-
 
         if (_stackNumber == -1)
         {

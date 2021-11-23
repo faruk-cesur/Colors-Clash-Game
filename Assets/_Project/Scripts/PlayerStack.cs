@@ -7,16 +7,11 @@ public class PlayerStack : MonoBehaviour
 {
     [SerializeField] private Animator _animator;
 
-   
-
-    public bool aaa = false;
-
     private void Start()
     {
         AnimationController.Instance.RunAnimation(_animator);
     }
 
-    
     public void PlayerStackDeath()
     {
         AnimationController.Instance.DeathAnimation(_animator);
@@ -29,11 +24,8 @@ public class PlayerStack : MonoBehaviour
 
         if (trap)
         {
-            aaa = true;
             player.stackGameObjectList.Remove(gameObject);
             transform.SetParent(null);
-            player.olen.Add(gameObject);
-            
             gameObject.GetComponent<PlayerStack>().PlayerStackDeath();
             gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.color = Color.black;
             player.CalculateStackPositions();
