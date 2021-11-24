@@ -72,11 +72,11 @@ public class SettingsManager : MonoBehaviour
     {
         if (sliderVibration.value == 0)
         {
-            Taptic.tapticOn = false;
+            //Taptic.tapticOn = false;
         }
         else
         {
-            Taptic.tapticOn = true;
+            //Taptic.tapticOn = true;
         }
     }
 

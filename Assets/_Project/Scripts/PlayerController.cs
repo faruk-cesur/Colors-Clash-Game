@@ -110,8 +110,8 @@ public class PlayerController : MonoBehaviour
     {
         for (int i = 0; i < 2; i++)
         {
-            Collectable collectable = other.GetComponent<Collectable>();
-            if (collectable)
+            Plus plus = other.GetComponent<Plus>();
+            if (plus)
             {
                 UIManager.Instance.gold++;
                 GameObject stackPlayer = Instantiate(_stackedPlayer, _playerModel.transform.position, _playerModel.transform.rotation);
