@@ -111,7 +111,7 @@ public class PlayerController : MonoBehaviour
         for (int i = 0; i < 2; i++)
         {
             Plus plus = other.GetComponent<Plus>();
-            if (plus)
+            if (plus && plus.plusColor == PlusColor.Blue) // TODO Seperate IF's
             {
                 UIManager.Instance.gold++;
                 GameObject stackPlayer = Instantiate(_stackedPlayer, _playerModel.transform.position, _playerModel.transform.rotation);

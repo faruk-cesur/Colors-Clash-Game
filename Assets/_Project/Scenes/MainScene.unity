@@ -11448,11 +11448,11 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1873524665}
   - {fileID: 1345450184}
   - {fileID: 301779570}
   - {fileID: 1918778130}
   - {fileID: 1537311078}
+  - {fileID: 1873524665}
   m_Father: {fileID: 724941061}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -12012,7 +12012,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1497931903
 Transform:
   m_ObjectHideFlags: 0
