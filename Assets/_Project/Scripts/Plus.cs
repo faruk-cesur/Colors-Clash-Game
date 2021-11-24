@@ -5,9 +5,9 @@ using NaughtyAttributes;
 
 public enum PlusColor
 {
+    Blue,
     Green,
     Red,
-    Blue,
     Yellow
 }
 
@@ -23,20 +23,20 @@ public class Plus : MonoBehaviour
     {
         switch (plusColor)
         {
-            case PlusColor.Green:
+            case PlusColor.Blue:
                 meshRenderer.sharedMaterial = materials[0];
                 break;
-            case PlusColor.Red:
+            case PlusColor.Green:
                 meshRenderer.sharedMaterial = materials[1];
                 break;
-            case PlusColor.Blue:
+            case PlusColor.Red:
                 meshRenderer.sharedMaterial = materials[2];
                 break;
             case PlusColor.Yellow:
                 meshRenderer.sharedMaterial = materials[3];
                 break;
             default:
-                throw new ArgumentOutOfRangeException(nameof(plusColor), plusColor, null);
+                throw new ArgumentOutOfRangeException();
         }
     }
 }

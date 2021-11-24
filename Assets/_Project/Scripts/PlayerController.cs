@@ -168,9 +168,9 @@ public class PlayerController : MonoBehaviour
         {
             for (int i = 0; i < 2; i++)
             {
-                Obstacle obstacle = other.GetComponent<Obstacle>();
+                Minus minus = other.GetComponent<Minus>();
 
-                if (obstacle)
+                if (minus)
                 {
                     stackGameObjectList[stackGameObjectList.Count - 1].gameObject.transform.SetParent(null);
                     stackGameObjectList[stackGameObjectList.Count - 1].gameObject.GetComponent<PlayerStack>().PlayerStackDeath();
