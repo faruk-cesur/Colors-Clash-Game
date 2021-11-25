@@ -11,12 +11,8 @@ public class Finish : MonoBehaviour
         PlayerController player = other.GetComponentInParent<PlayerController>();
         if (player)
         {
-            player.PlayerSpeedDown();
-            PlayerPrefs.SetInt("TotalGold", UIManager.Instance.gold + PlayerPrefs.GetInt("TotalGold"));
-            UIManager.Instance.UpdateGoldInfo();
+            StartCoroutine(player.PlayerSpeedDown());
             GameManager.Instance.WinGame();
-            GameManager.Instance.CurrentGameState = GameState.WinGame;
-            SoundManager.Instance.PlaySound(SoundManager.Instance.winGameSound, 1);
         }
     }
 }

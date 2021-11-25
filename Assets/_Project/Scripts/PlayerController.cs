@@ -232,19 +232,12 @@ public class PlayerController : MonoBehaviour
         CameraManager.Instance.mainGameCam.GetComponent<CinemachineVirtualCamera>().m_Lens.FieldOfView -= 0.2f;
     }
 
-    public void PlayerSpeedDown()
-    {
-        StartCoroutine(FinishGame());
-    }
-
     private void PlayerDeath()
     {
-        _runSpeed = 0;
-        GameManager.Instance.LoseGame();
-        AnimationController.Instance.DeathAnimation(_animator);
-        StartCoroutine(SoundManager.Instance.LoseGameSound());
-        GameManager.Instance.CurrentGameState = GameState.LoseGame;
         _isPlayerInteract = true;
+        _runSpeed = 0;
+        AnimationController.Instance.DeathAnimation(_animator);
+        GameManager.Instance.LoseGame();
     }
 
     #endregion
@@ -252,7 +245,7 @@ public class PlayerController : MonoBehaviour
 
     #region Coroutines
 
-    private IEnumerator FinishGame()
+    public IEnumerator PlayerSpeedDown()
     {
         float timer = 0;
         float fixSpeed = _runSpeed;
@@ -269,15 +262,7 @@ public class PlayerController : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
     }
-
-    private IEnumerator PlayerInteractBool()
-    {
-        _isPlayerInteract = true;
-        yield return new WaitForSeconds(1f);
-        _isPlayerInteract = false;
-    }
-
-
+    
     private IEnumerator PlayerScaleCountDown(GameObject stackPlayer)
     {
         yield return new WaitForSeconds(0.15f);
