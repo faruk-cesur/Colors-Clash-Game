@@ -3,7 +3,17 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - CubeRed
+  - CubeGreen
+  - CubeBlue
+  - CubeYellow
+  - Obstacle
+  - Minus
+  - PlusRed
+  - PlusGreen
+  - PlusBlue
+  - PlusYellow
   layers:
   - Default
   - TransparentFX
@@ -12,9 +22,9 @@ TagManager:
   - Water
   - UI
   - PlayerStack
-  - Collectable
+  - Plus
+  - Minus
   - Obstacle
-  - Trap
   - 
   - 
   - 

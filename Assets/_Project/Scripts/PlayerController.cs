@@ -110,8 +110,7 @@ public class PlayerController : MonoBehaviour
     {
         for (int i = 0; i < 2; i++)
         {
-            Plus plus = other.GetComponent<Plus>();
-            if (plus && plus.plusColor == PlusColor.Blue) // TODO Seperate IF's
+            if (other.CompareTag("PlusGreen")) // TODO Seperate IF's
             {
                 UIManager.Instance.gold++;
                 GameObject stackPlayer = Instantiate(_stackedPlayer, _playerModel.transform.position, _playerModel.transform.rotation);
@@ -168,9 +167,7 @@ public class PlayerController : MonoBehaviour
         {
             for (int i = 0; i < 2; i++)
             {
-                Minus minus = other.GetComponent<Minus>();
-
-                if (minus)
+                if (other.CompareTag("Minus"))
                 {
                     stackGameObjectList[stackGameObjectList.Count - 1].gameObject.transform.SetParent(null);
                     stackGameObjectList[stackGameObjectList.Count - 1].gameObject.GetComponent<PlayerStack>().PlayerStackDeath();
@@ -179,7 +176,6 @@ public class PlayerController : MonoBehaviour
                     stackGameObjectList.RemoveAt(stackGameObjectList.Count - 1);
                     _stackNumber--;
                     _currentLinePositionX -= 0.7f;
-
 
                     if (_stackNumber == -1)
                     {
@@ -262,7 +258,7 @@ public class PlayerController : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
     }
-    
+
     private IEnumerator PlayerScaleCountDown(GameObject stackPlayer)
     {
         yield return new WaitForSeconds(0.15f);

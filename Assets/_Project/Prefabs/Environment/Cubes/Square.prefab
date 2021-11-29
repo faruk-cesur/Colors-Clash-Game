@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 412414938010063242}
   - component: {fileID: 3609330151112351279}
   - component: {fileID: 1581359335055321829}
+  - component: {fileID: 6748032828961276214}
   m_Layer: 0
   m_Name: Square
-  m_TagString: Untagged
+  m_TagString: CubeGreen
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -82,3 +83,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &6748032828961276214
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1077171337712618288}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 472.7186, y: 472.47885, z: 470.99753}
+  m_Center: {x: 0, y: 0, z: 0.00009155273}

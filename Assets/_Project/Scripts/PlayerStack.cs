@@ -19,10 +19,9 @@ public class PlayerStack : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        Obstacle obstacle = other.GetComponentInParent<Obstacle>();
         PlayerController player = GetComponentInParent<PlayerController>();
 
-        if (obstacle)
+        if (other.CompareTag("Obstacle"))
         {
             player.stackGameObjectList.Remove(gameObject);
             transform.SetParent(null);
