@@ -3253,7 +3253,7 @@ GameObject:
   m_Component:
   - component: {fileID: 467231315}
   m_Layer: 0
-  m_Name: ---------- Static Objects ----------
+  m_Name: ---------- Other Objects ----------
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10484,7 +10484,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1497931903
 Transform:
   m_ObjectHideFlags: 0
@@ -10512,7 +10512,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levels:
-  - {fileID: 322895085}
   - {fileID: 1769307523}
   currentLevel: 0
 --- !u!1001 &1506873472
@@ -12437,7 +12436,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1769307524
 Transform:
   m_ObjectHideFlags: 0
@@ -23329,7 +23328,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 126
   m_CollisionDetection: 1
 --- !u!1 &1553310179403345730
 GameObject:
@@ -26874,9 +26873,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: RetryButton
+      - m_Target: {fileID: 160445741}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: RestartGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

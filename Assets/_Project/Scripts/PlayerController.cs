@@ -251,6 +251,14 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.CompareTag("CubeRed") || other.gameObject.CompareTag("CubeGreen") || other.gameObject.CompareTag("CubeBlue") || other.gameObject.CompareTag("CubeYellow") )
+        {
+            PlayerDeath();
+        }
+    }
+
     #endregion
 
 
