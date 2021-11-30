@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 
-public class PlayerStack : MonoBehaviour
+public class Stack : MonoBehaviour
 {
     [SerializeField] private Animator _animator;
 
@@ -12,7 +12,7 @@ public class PlayerStack : MonoBehaviour
         AnimationController.Instance.RunAnimation(_animator);
     }
 
-    public void PlayerStackDeath()
+    public void StackDeath()
     {
         AnimationController.Instance.DeathAnimation(_animator);
     }
@@ -25,7 +25,7 @@ public class PlayerStack : MonoBehaviour
         {
             player.stackGameObjectList.Remove(gameObject);
             transform.SetParent(null);
-            gameObject.GetComponent<PlayerStack>().PlayerStackDeath();
+            gameObject.GetComponent<Stack>().StackDeath();
             gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.color = Color.black;
             player.CalculateStackPositions();
         }

@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform _playerModel;
     [SerializeField] private Transform _playerModelStickman;
 
-    [SerializeField] private GameObject _stackedPlayer;
+    [SerializeField] private GameObject _stackPrefab;
 
     [SerializeField] private Animator _animator;
 
@@ -110,10 +110,11 @@ public class PlayerController : MonoBehaviour
     {
         for (int i = 0; i < 2; i++)
         {
-            if (other.CompareTag("PlusGreen")) // TODO Seperate IF's
+            if (other.CompareTag("PlusRed"))
             {
-                UIManager.Instance.gold++;
-                GameObject stackPlayer = Instantiate(_stackedPlayer, _playerModel.transform.position, _playerModel.transform.rotation);
+                GameObject stackPlayer = Instantiate(_stackPrefab, _playerModel.transform.position, _playerModel.transform.rotation);
+                stackPlayer.GetComponentInChildren<SkinnedMeshRenderer>().material.color = Color.red;
+                stackPlayer.tag = "StackRed";
                 stackPlayer.transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
                 stackPlayer.transform.DOScale(new Vector3(2f, 2f, 2f), 0.25f);
                 StartCoroutine(PlayerScaleCountDown(stackPlayer));
@@ -134,28 +135,91 @@ public class PlayerController : MonoBehaviour
 
                 stackPlayer.transform.DOLocalMove(new Vector3(_currentLinePositionX, stackPlayer.transform.position.y, _newLinePositionZ), 0.25f);
 
-                _currentLinePositionX += 0.7f;
+                NextStackPosition();
+            }
 
-                CameraManager.Instance.mainGameCam.GetComponent<CinemachineVirtualCamera>().m_Lens.FieldOfView += 0.2f;
+            if (other.CompareTag("PlusGreen"))
+            {
+                GameObject stackPlayer = Instantiate(_stackPrefab, _playerModel.transform.position, _playerModel.transform.rotation);
+                stackPlayer.GetComponentInChildren<SkinnedMeshRenderer>().material.color = Color.green;
+                stackPlayer.tag = "StackGreen";
+                stackPlayer.transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
+                stackPlayer.transform.DOScale(new Vector3(2f, 2f, 2f), 0.25f);
+                StartCoroutine(PlayerScaleCountDown(stackPlayer));
+                stackPlayer.transform.SetParent(_playerModel.transform);
 
-                if (_stackNumber == 3 && !_isFirstLineCreated)
+                _stackNumber++;
+
+                stackPlayer.transform.localPosition = new Vector3(_currentLinePositionX, stackPlayer.transform.position.y, _newLinePositionZ);
+
+                if (stackGameObjectList.Count == stackVectorList.Count)
                 {
-                    _isFirstLineCreated = true;
-                    _newLinePositionX -= 0.7f;
-                    _newLinePositionZ -= 2f;
-                    _currentLinePositionX = _newLinePositionX;
-                    _stackHolder = _stackNumber;
-                    _stackNumber = 0;
+                    stackVectorList.Add(stackPlayer.transform.localPosition);
                 }
 
-                if (_stackNumber == _stackHolder + 2 && _stackNumber != 2)
+                stackGameObjectList.Add(stackPlayer);
+
+                stackPlayer.transform.position = _playerModel.transform.position;
+
+                stackPlayer.transform.DOLocalMove(new Vector3(_currentLinePositionX, stackPlayer.transform.position.y, _newLinePositionZ), 0.25f);
+
+                NextStackPosition();
+            }
+
+            if (other.CompareTag("PlusBlue"))
+            {
+                GameObject stackPlayer = Instantiate(_stackPrefab, _playerModel.transform.position, _playerModel.transform.rotation);
+                stackPlayer.GetComponentInChildren<SkinnedMeshRenderer>().material.color = Color.blue;
+                stackPlayer.tag = "StackBlue";
+                stackPlayer.transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
+                stackPlayer.transform.DOScale(new Vector3(2f, 2f, 2f), 0.25f);
+                StartCoroutine(PlayerScaleCountDown(stackPlayer));
+                stackPlayer.transform.SetParent(_playerModel.transform);
+
+                _stackNumber++;
+
+                stackPlayer.transform.localPosition = new Vector3(_currentLinePositionX, stackPlayer.transform.position.y, _newLinePositionZ);
+
+                if (stackGameObjectList.Count == stackVectorList.Count)
                 {
-                    _newLinePositionX -= 0.7f;
-                    _newLinePositionZ -= 2f;
-                    _currentLinePositionX = _newLinePositionX;
-                    _stackHolder = _stackNumber;
-                    _stackNumber = 0;
+                    stackVectorList.Add(stackPlayer.transform.localPosition);
                 }
+
+                stackGameObjectList.Add(stackPlayer);
+
+                stackPlayer.transform.position = _playerModel.transform.position;
+
+                stackPlayer.transform.DOLocalMove(new Vector3(_currentLinePositionX, stackPlayer.transform.position.y, _newLinePositionZ), 0.25f);
+
+                NextStackPosition();
+            }
+
+            if (other.CompareTag("PlusYellow"))
+            {
+                GameObject stack = Instantiate(_stackPrefab, _playerModel.transform.position, _playerModel.transform.rotation);
+                stack.GetComponentInChildren<SkinnedMeshRenderer>().material.color = Color.yellow;
+                stack.tag = "StackYellow";
+                stack.transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
+                stack.transform.DOScale(new Vector3(2f, 2f, 2f), 0.25f);
+                StartCoroutine(PlayerScaleCountDown(stack));
+                stack.transform.SetParent(_playerModel.transform);
+
+                _stackNumber++;
+
+                stack.transform.localPosition = new Vector3(_currentLinePositionX, stack.transform.position.y, _newLinePositionZ);
+
+                if (stackGameObjectList.Count == stackVectorList.Count)
+                {
+                    stackVectorList.Add(stack.transform.localPosition);
+                }
+
+                stackGameObjectList.Add(stack);
+
+                stack.transform.position = _playerModel.transform.position;
+
+                stack.transform.DOLocalMove(new Vector3(_currentLinePositionX, stack.transform.position.y, _newLinePositionZ), 0.25f);
+
+                NextStackPosition();
             }
         }
 
@@ -170,7 +234,7 @@ public class PlayerController : MonoBehaviour
                 if (other.CompareTag("Minus"))
                 {
                     stackGameObjectList[stackGameObjectList.Count - 1].gameObject.transform.SetParent(null);
-                    stackGameObjectList[stackGameObjectList.Count - 1].gameObject.GetComponent<PlayerStack>().PlayerStackDeath();
+                    stackGameObjectList[stackGameObjectList.Count - 1].gameObject.GetComponent<Stack>().StackDeath();
                     stackGameObjectList[stackGameObjectList.Count - 1].gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.color = Color.black;
                     Destroy(stackGameObjectList[stackGameObjectList.Count - 1], 2f);
                     stackGameObjectList.RemoveAt(stackGameObjectList.Count - 1);
@@ -226,6 +290,33 @@ public class PlayerController : MonoBehaviour
         }
 
         CameraManager.Instance.mainGameCam.GetComponent<CinemachineVirtualCamera>().m_Lens.FieldOfView -= 0.2f;
+    }
+
+    private void NextStackPosition()
+    {
+        _currentLinePositionX += 0.7f;
+
+        CameraManager.Instance.mainGameCam.GetComponent<CinemachineVirtualCamera>().m_Lens.FieldOfView += 0.2f;
+        UIManager.Instance.gold++;
+
+        if (_stackNumber == 3 && !_isFirstLineCreated)
+        {
+            _isFirstLineCreated = true;
+            _newLinePositionX -= 0.7f;
+            _newLinePositionZ -= 2f;
+            _currentLinePositionX = _newLinePositionX;
+            _stackHolder = _stackNumber;
+            _stackNumber = 0;
+        }
+
+        if (_stackNumber == _stackHolder + 2 && _stackNumber != 2)
+        {
+            _newLinePositionX -= 0.7f;
+            _newLinePositionZ -= 2f;
+            _currentLinePositionX = _newLinePositionX;
+            _stackHolder = _stackNumber;
+            _stackNumber = 0;
+        }
     }
 
     private void PlayerDeath()

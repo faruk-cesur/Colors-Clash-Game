@@ -808,7 +808,7 @@ GameObject:
   - component: {fileID: 3214866030376666502}
   - component: {fileID: 5233664803552751673}
   m_Layer: 6
-  m_Name: Stickman
+  m_Name: Stack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -8,8 +8,9 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: m_Platform
-  m_Shader: {fileID: 4800000, guid: 881c73b45dda42d4ba29f8c7742329be, type: 3}
-  m_ShaderKeywords: _MK_LIGHTMODEL_LAMBERT _MK_LIGHTTYPE_CEL_SHADE_SIMPLE
+  m_Shader: {fileID: 4800000, guid: 6ee274c501732384d9c8bb02a4576937, type: 3}
+  m_ShaderKeywords: _MK_LIGHTMODEL_LAMBERT _MK_LIGHTTYPE_CEL_SHADE_SIMPLE _MK_RIM
+    _USEOUTLINE_ON _USERIM_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -106,21 +107,21 @@ Material:
     - _DissolveRampSize: 0.25
     - _DstBlend: 0
     - _GlossMapScale: 1
-    - _Glossiness: 0
+    - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _LightCuts: 3
     - _LightModel: 1
-    - _LightSmoothness: 0.943
-    - _LightThreshold: 0.443
+    - _LightSmoothness: 0.37
+    - _LightThreshold: 0.323
     - _LightType: 1
-    - _MKEditorShowDetailBehavior: 0
+    - _MKEditorShowDetailBehavior: 1
     - _MKEditorShowDissolveBehavior: 0
     - _MKEditorShowLightBehavior: 1
     - _MKEditorShowMainBehavior: 1
-    - _MKEditorShowOutlineBehavior: 0
+    - _MKEditorShowOutlineBehavior: 1
     - _MKEditorShowReflectionBehavior: 0
     - _MKEditorShowRenderBehavior: 0
-    - _MKEditorShowRimBehavior: 0
+    - _MKEditorShowRimBehavior: 1
     - _MKEditorShowShadowBehavior: 1
     - _MKEditorShowSketchBehavior: 0
     - _MKEditorShowSpecularBehavior: 0
@@ -128,7 +129,7 @@ Material:
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
-    - _OutlineSize: 0.02
+    - _OutlineSize: 0.03
     - _Parallax: 0.02
     - _ReflectIntensity: 0.5
     - _ReflectSmoothness: 0
@@ -137,7 +138,7 @@ Material:
     - _RimSmoothness: 0.5
     - _Roughness: 1
     - _Saturation: 1
-    - _ShadowIntensity: 0.77
+    - _ShadowIntensity: 0.36
     - _Shininess: 0.275
     - _SketchScale: 16
     - _SketchToneMax: 1
@@ -152,22 +153,22 @@ Material:
     - _UseAnisotropicSpecular: 0
     - _UseBumpMap: 0
     - _UseDissolve: 0
-    - _UseOutline: 0
+    - _UseOutline: 1
     - _UseReflection: 0
-    - _UseRim: 0
+    - _UseRim: 1
     - _UseSketch: 0
     - _UseTranslucent: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.8941177, g: 0.90196085, b: 0.7058824, a: 1}
+    - _Color: {r: 0.96246403, g: 0.3443396, b: 1, a: 1}
     - _DetailColor: {r: 1, g: 1, b: 1, a: 1}
     - _DissolveColor: {r: 1, g: 1, b: 1, a: 0.5}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _HighlightColor: {r: 1, g: 1, b: 1, a: 1}
-    - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
+    - _OutlineColor: {r: 1, g: 1, b: 1, a: 1}
     - _ReflectColor: {r: 1, g: 1, b: 1, a: 0.5}
     - _RimColor: {r: 1, g: 1, b: 1, a: 1}
-    - _ShadowColor: {r: 0.23137255, g: 0, b: 0.36862746, a: 1}
+    - _ShadowColor: {r: 0.17354932, g: 0.52762055, b: 0.9433962, a: 1}
     - _SpecColor: {r: 1, g: 1, b: 1, a: 0.5}
     - _TranslucentColor: {r: 1, g: 1, b: 1, a: 0.5}
   m_BuildTextureStacks: []
