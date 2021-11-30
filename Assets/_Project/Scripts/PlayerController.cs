@@ -43,17 +43,17 @@ public class PlayerController : MonoBehaviour
         switch (GameManager.Instance.CurrentGameState)
         {
             case GameState.PrepareGame:
-                AnimationController.Instance.IdleAnimation(_animator);
+                AnimationManager.Instance.IdleAnimation(_animator);
                 break;
             case GameState.MainGame:
                 ForwardMovement();
                 SwerveMovement();
-                AnimationController.Instance.RunAnimation(_animator);
+                AnimationManager.Instance.RunAnimation(_animator);
                 break;
             case GameState.LoseGame:
                 break;
             case GameState.WinGame:
-                AnimationController.Instance.WinAnimation(_animator);
+                AnimationManager.Instance.WinAnimation(_animator);
                 _playerModelStickman.transform.rotation = Quaternion.Euler(0, 180, 0);
                 break;
             default:
@@ -323,7 +323,7 @@ public class PlayerController : MonoBehaviour
     {
         _isPlayerInteract = true;
         _runSpeed = 0;
-        AnimationController.Instance.DeathAnimation(_animator);
+        AnimationManager.Instance.DeathAnimation(_animator);
         GameManager.Instance.LoseGame();
     }
 

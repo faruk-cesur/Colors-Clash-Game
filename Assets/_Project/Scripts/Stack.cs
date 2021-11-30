@@ -9,12 +9,12 @@ public class Stack : MonoBehaviour
 
     private void Start()
     {
-        AnimationController.Instance.RunAnimation(_animator);
+        AnimationManager.Instance.RunAnimation(_animator);
     }
 
     public void StackDeath()
     {
-        AnimationController.Instance.DeathAnimation(_animator);
+        AnimationManager.Instance.DeathAnimation(_animator);
     }
 
     public void OnTriggerEnter(Collider other)
