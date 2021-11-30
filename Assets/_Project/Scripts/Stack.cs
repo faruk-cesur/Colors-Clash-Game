@@ -7,11 +7,21 @@ using UnityEngine.PlayerLoop;
 public class Stack : MonoBehaviour
 {
     [SerializeField] private Animator _animator;
-    private bool _onTarget = false;
+    private bool _onTarget;
+    private bool _isGameLose;
 
     private void Start()
     {
         AnimationManager.Instance.RunAnimation(_animator);
+    }
+
+    private void Update()
+    {
+        if (GameManager.Instance.CurrentGameState == GameState.LoseGame && !_isGameLose)
+        {
+            _isGameLose = true;
+            AnimationManager.Instance.DeathAnimation(_animator);
+        }
     }
 
     public void StackDeath()
@@ -41,6 +51,8 @@ public class Stack : MonoBehaviour
             gameObject.transform.SetParent(null);
             gameObject.transform.DOMove(other.gameObject.transform.position, 2f);
             StackDestroyCube(player, other);
+            gameObject.GetComponent<Animator>().applyRootMotion = true;
+            AnimationManager.Instance.KickAnimation(_animator);
         }
 
         if (other.CompareTag("CubeGreen") && gameObject.CompareTag("StackGreen") && !_onTarget)
@@ -50,6 +62,8 @@ public class Stack : MonoBehaviour
             gameObject.transform.SetParent(null);
             gameObject.transform.DOMove(other.gameObject.transform.position, 2f);
             StackDestroyCube(player, other);
+            gameObject.GetComponent<Animator>().applyRootMotion = true;
+            AnimationManager.Instance.KickAnimation(_animator);
         }
 
         if (other.CompareTag("CubeBlue") && gameObject.CompareTag("StackBlue") && !_onTarget)
@@ -59,6 +73,8 @@ public class Stack : MonoBehaviour
             gameObject.transform.SetParent(null);
             gameObject.transform.DOMove(other.gameObject.transform.position, 2f);
             StackDestroyCube(player, other);
+            gameObject.GetComponent<Animator>().applyRootMotion = true;
+            AnimationManager.Instance.KickAnimation(_animator);
         }
 
         if (other.CompareTag("CubeYellow") && gameObject.CompareTag("StackYellow") && !_onTarget)
@@ -68,15 +84,15 @@ public class Stack : MonoBehaviour
             gameObject.transform.SetParent(null);
             gameObject.transform.DOMove(other.gameObject.transform.position, 2f);
             StackDestroyCube(player, other);
+            gameObject.GetComponent<Animator>().applyRootMotion = true;
+            AnimationManager.Instance.KickAnimation(_animator);
         }
     }
 
     private void StackDestroyCube(PlayerController player, Collider other)
     {
-        //gameObject.GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
         Destroy(other.gameObject, 2f);
         player.stackGameObjectList.Remove(gameObject);
-
         Destroy(gameObject, 2f);
         player.CalculateStackPositions();
     }

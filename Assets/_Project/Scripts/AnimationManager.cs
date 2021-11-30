@@ -42,4 +42,10 @@ public class AnimationManager : MonoBehaviour
         animator.SetBool("Run", false);
         animator.SetBool("Win", true);
     }
+
+    public void KickAnimation(Animator animator)
+    {
+        animator.SetBool("Run", false);
+        animator.SetBool("Kick", true);
+    }
 }
