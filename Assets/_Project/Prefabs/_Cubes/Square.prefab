@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 3609330151112351279}
   - component: {fileID: 1581359335055321829}
   - component: {fileID: 6748032828961276214}
+  - component: {fileID: 3247811706463803285}
+  - component: {fileID: -5969816033588712486}
   m_Layer: 0
   m_Name: Square
   m_TagString: CubeGreen
@@ -92,6 +94,35 @@ BoxCollider:
   m_GameObject: {fileID: 1077171337712618288}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 6000, y: 6000, z: 10000}
+  m_Center: {x: 0, y: 0, z: -5000}
+--- !u!54 &3247811706463803285
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1077171337712618288}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 122
+  m_CollisionDetection: 0
+--- !u!65 &-5969816033588712486
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1077171337712618288}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 472.7186, y: 472.47885, z: 470.99753}

@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 3481435881153648134}
   - component: {fileID: 1708126725325890252}
   - component: {fileID: -6743656750383919420}
+  - component: {fileID: -6266338341263856070}
+  - component: {fileID: 3456711689354834284}
   m_Layer: 0
   m_Name: Hexagonal
   m_TagString: CubeRed
@@ -92,6 +94,35 @@ BoxCollider:
   m_GameObject: {fileID: 915497657312019225}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 6000, y: 6000, z: 10000}
+  m_Center: {x: 0, y: 0, z: -5000}
+--- !u!54 &-6266338341263856070
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 915497657312019225}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 122
+  m_CollisionDetection: 0
+--- !u!65 &3456711689354834284
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 915497657312019225}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 471.0599, y: 473.16165, z: 471.05075}
