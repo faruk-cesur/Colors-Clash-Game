@@ -167,7 +167,7 @@ public class PlayerController : MonoBehaviour
         if (other.CompareTag("PlusBlue"))
         {
             GameObject stackPlayer = Instantiate(_stackPrefab, _playerModel.transform.position, _playerModel.transform.rotation);
-            stackPlayer.GetComponentInChildren<SkinnedMeshRenderer>().material.color = new Color(0,0.5f,1f);
+            stackPlayer.GetComponentInChildren<SkinnedMeshRenderer>().material.color = new Color(0, 0.5f, 1f);
             stackPlayer.tag = "StackBlue";
             stackPlayer.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
             stackPlayer.transform.DOScale(new Vector3(1.8f, 1.8f, 1.8f), 0.25f);
