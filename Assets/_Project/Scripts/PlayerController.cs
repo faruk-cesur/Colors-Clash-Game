@@ -113,8 +113,8 @@ public class PlayerController : MonoBehaviour
             GameObject stackPlayer = Instantiate(_stackPrefab, _playerModel.transform.position, _playerModel.transform.rotation);
             stackPlayer.GetComponentInChildren<SkinnedMeshRenderer>().material.color = Color.red;
             stackPlayer.tag = "StackRed";
-            stackPlayer.transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
-            stackPlayer.transform.DOScale(new Vector3(2f, 2f, 2f), 0.25f);
+            stackPlayer.transform.localScale = new Vector3(0.10f, 0.10f, 0.10f);
+            stackPlayer.transform.DOScale(new Vector3(1.8f, 1.8f, 1.8f), 0.25f);
             StartCoroutine(PlayerScaleCountDown(stackPlayer));
             stackPlayer.transform.SetParent(_playerModel.transform);
 
@@ -141,8 +141,8 @@ public class PlayerController : MonoBehaviour
             GameObject stackPlayer = Instantiate(_stackPrefab, _playerModel.transform.position, _playerModel.transform.rotation);
             stackPlayer.GetComponentInChildren<SkinnedMeshRenderer>().material.color = Color.green;
             stackPlayer.tag = "StackGreen";
-            stackPlayer.transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
-            stackPlayer.transform.DOScale(new Vector3(2f, 2f, 2f), 0.25f);
+            stackPlayer.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+            stackPlayer.transform.DOScale(new Vector3(1.8f, 1.8f, 1.8f), 0.25f);
             StartCoroutine(PlayerScaleCountDown(stackPlayer));
             stackPlayer.transform.SetParent(_playerModel.transform);
 
@@ -169,8 +169,8 @@ public class PlayerController : MonoBehaviour
             GameObject stackPlayer = Instantiate(_stackPrefab, _playerModel.transform.position, _playerModel.transform.rotation);
             stackPlayer.GetComponentInChildren<SkinnedMeshRenderer>().material.color = Color.blue;
             stackPlayer.tag = "StackBlue";
-            stackPlayer.transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
-            stackPlayer.transform.DOScale(new Vector3(2f, 2f, 2f), 0.25f);
+            stackPlayer.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+            stackPlayer.transform.DOScale(new Vector3(1.8f, 1.8f, 1.8f), 0.25f);
             StartCoroutine(PlayerScaleCountDown(stackPlayer));
             stackPlayer.transform.SetParent(_playerModel.transform);
 
@@ -197,8 +197,8 @@ public class PlayerController : MonoBehaviour
             GameObject stack = Instantiate(_stackPrefab, _playerModel.transform.position, _playerModel.transform.rotation);
             stack.GetComponentInChildren<SkinnedMeshRenderer>().material.color = Color.yellow;
             stack.tag = "StackYellow";
-            stack.transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
-            stack.transform.DOScale(new Vector3(2f, 2f, 2f), 0.25f);
+            stack.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+            stack.transform.DOScale(new Vector3(1.8f, 1.8f, 1.8f), 0.25f);
             StartCoroutine(PlayerScaleCountDown(stack));
             stack.transform.SetParent(_playerModel.transform);
 
@@ -355,7 +355,7 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator PlayerScaleCountDown(GameObject stackPlayer)
     {
-        yield return new WaitForSeconds(0.15f);
+        yield return new WaitForSeconds(0.10f);
         stackPlayer.transform.DOScale(new Vector3(1, 1, 1), 0.25f);
     }
 
