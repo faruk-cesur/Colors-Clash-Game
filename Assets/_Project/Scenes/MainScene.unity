@@ -22542,7 +22542,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stackGameObjectList: []
   stackVectorList: []
-  _runSpeed: 15
+  _runSpeed: 20
   _slideSpeed: 16
   _maxSlideAmount: 7.5
   _playerModel: {fileID: 13011116200233782}
@@ -32466,6 +32466,36 @@ PrefabInstance:
     - target: {fileID: 3234811725700062295, guid: cc00178845e87419fa85349375284b92,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8370547529514164580, guid: cc00178845e87419fa85349375284b92,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8370547529632649560, guid: cc00178845e87419fa85349375284b92,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8370547529671176433, guid: cc00178845e87419fa85349375284b92,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8370547530015064018, guid: cc00178845e87419fa85349375284b92,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8370547530565920066, guid: cc00178845e87419fa85349375284b92,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8370547530653102092, guid: cc00178845e87419fa85349375284b92,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

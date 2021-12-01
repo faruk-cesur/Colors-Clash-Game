@@ -272,7 +272,7 @@ public class PlayerController : MonoBehaviour
             {
                 if (stackGameObjectList[i].transform.localPosition != stackVectorList[i])
                 {
-                    stackGameObjectList[i].transform.localPosition = Vector3.MoveTowards(stackGameObjectList[i].transform.localPosition, stackVectorList[i], 0.5f * Time.deltaTime);
+                    stackGameObjectList[i].transform.localPosition = Vector3.MoveTowards(stackGameObjectList[i].transform.localPosition, stackVectorList[i], 1f * Time.deltaTime);
                 }
             }
         }
