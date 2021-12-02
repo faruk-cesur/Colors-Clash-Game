@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
 
     private bool _isPlayerInteract;
     private bool _isFirstLineCreated;
+    private bool _isPlayerWin;
 
     private float _newLinePositionX = -0.7f;
     private float _newLinePositionZ = -2f;
@@ -219,8 +220,59 @@ public class PlayerController : MonoBehaviour
 
             NextStackPosition();
         }
-
-
+        
+        if (other.CompareTag("Win"))
+        {
+            _isPlayerWin = true;
+            print("Win Finish");
+        }
+        
+        if (other.CompareTag("X1"))
+        {
+            UIManager.Instance.gold *= 1;
+            other.gameObject.GetComponent<Collider>().enabled = false;
+            print("X1");
+        }
+        
+        if (other.CompareTag("X2"))
+        {
+            UIManager.Instance.gold *= 2;
+            other.gameObject.GetComponent<Collider>().enabled = false;
+            print("X2");
+        }
+        
+        if (other.CompareTag("X4"))
+        {
+            UIManager.Instance.gold /= 2;
+            UIManager.Instance.gold *= 4;
+            other.gameObject.GetComponent<Collider>().enabled = false;
+            print("X4");
+        }
+        
+        if (other.CompareTag("X6"))
+        {
+            UIManager.Instance.gold /= 4;
+            UIManager.Instance.gold *= 6;
+            other.gameObject.GetComponent<Collider>().enabled = false;
+            print("X6");
+        }
+        
+        if (other.CompareTag("X8"))
+        {
+            UIManager.Instance.gold /= 6;
+            UIManager.Instance.gold *= 8;
+            other.gameObject.GetComponent<Collider>().enabled = false;
+            print("X8");
+        }
+        
+        if (other.CompareTag("X10"))
+        {
+            UIManager.Instance.gold /= 8;
+            UIManager.Instance.gold *= 10;
+            other.gameObject.GetComponent<Collider>().enabled = false;
+            print("X10");
+        }
+        
         if (stackGameObjectList.Count == 0)
         {
             return;
@@ -253,9 +305,16 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.CompareTag("CubeRed") || other.gameObject.CompareTag("CubeGreen") || other.gameObject.CompareTag("CubeBlue") || other.gameObject.CompareTag("CubeYellow"))
+        if (!_isPlayerWin && other.gameObject.CompareTag("CubeRed") || other.gameObject.CompareTag("CubeGreen") || other.gameObject.CompareTag("CubeBlue") || other.gameObject.CompareTag("CubeYellow"))
         {
             PlayerDeath();
+        }
+        
+        if (_isPlayerWin && other.gameObject.CompareTag("CubeRed") || other.gameObject.CompareTag("CubeGreen") || other.gameObject.CompareTag("CubeBlue") || other.gameObject.CompareTag("CubeYellow"))
+        {
+            _runSpeed = 0;
+            AnimationManager.Instance.WinAnimation(_animator);
+            PlayerWinCondition();
         }
     }
 
@@ -329,30 +388,15 @@ public class PlayerController : MonoBehaviour
         AnimationManager.Instance.DeathAnimation(_animator);
         GameManager.Instance.LoseGame();
     }
-
-    #endregion
-
-
-    #region Coroutines
-
-    public IEnumerator PlayerSpeedDown()
+    
+    private void PlayerWinCondition()
     {
-        float timer = 0;
-        float fixSpeed = _runSpeed;
-        while (true)
+        if (_runSpeed == 0 && _isPlayerWin)
         {
-            timer += Time.deltaTime;
-            _runSpeed = Mathf.Lerp(fixSpeed, 0, timer);
-
-            if (timer >= 1f)
-            {
-                break;
-            }
-
-            yield return new WaitForEndOfFrame();
+            GameManager.Instance.WinGame();
         }
     }
-
+    
     private IEnumerator PlayerScaleCountDown(GameObject stackPlayer)
     {
         yield return new WaitForSeconds(0.10f);
