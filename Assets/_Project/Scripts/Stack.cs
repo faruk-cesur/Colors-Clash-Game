@@ -7,6 +7,10 @@ using UnityEngine.PlayerLoop;
 public class Stack : MonoBehaviour
 {
     [SerializeField] private Animator _animator;
+    [SerializeField] private GameObject _particleBlue;
+    [SerializeField] private GameObject _particleGreen;
+    [SerializeField] private GameObject _particleRed;
+    [SerializeField] private GameObject _particleYellow;
     private bool _onTarget;
     private bool _isGameLose;
 
@@ -107,9 +111,33 @@ public class Stack : MonoBehaviour
 
     private void StackDestroyCube(PlayerController player, Collider other)
     {
+        Invoke(nameof(ParticleVision), 1.3f);
         Destroy(other.gameObject, 1.3f);
         player.stackGameObjectList.Remove(gameObject);
         Destroy(gameObject, 1.3f);
         player.CalculateStackPositions();
+    }
+
+    private void ParticleVision()
+    {
+        if (gameObject.CompareTag("StackBlue"))
+        {
+            Instantiate(_particleBlue, gameObject.transform.position, gameObject.transform.rotation);
+        }
+
+        if (gameObject.CompareTag("StackRed"))
+        {
+            Instantiate(_particleRed, gameObject.transform.position, gameObject.transform.rotation);
+        }
+
+        if (gameObject.CompareTag("StackGreen"))
+        {
+            Instantiate(_particleGreen, gameObject.transform.position, gameObject.transform.rotation);
+        }
+
+        if (gameObject.CompareTag("StackYellow"))
+        {
+            Instantiate(_particleYellow, gameObject.transform.position, gameObject.transform.rotation);
+        }
     }
 }

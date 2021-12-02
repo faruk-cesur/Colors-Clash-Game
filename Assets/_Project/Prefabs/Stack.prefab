@@ -862,6 +862,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 6064405784611437921}
+  _particleBlue: {fileID: 3038026936286433507, guid: d72d2c42137864b5caab06180e6e55b3,
+    type: 3}
+  _particleGreen: {fileID: 3038026936286433507, guid: 57f5ae02ac079444d8c0dc15480a2a4d,
+    type: 3}
+  _particleRed: {fileID: 3038026936286433507, guid: 6a42bcdff70d44d52b4bda2f72dab012,
+    type: 3}
+  _particleYellow: {fileID: 3038026936286433507, guid: 8a2c8b573ddd644d3b24bc1fd061a2e7,
+    type: 3}
 --- !u!136 &5233664803552751673
 CapsuleCollider:
   m_ObjectHideFlags: 0
