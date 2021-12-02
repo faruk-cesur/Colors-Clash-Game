@@ -269,6 +269,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7743906588523607616}
   - component: {fileID: 7853533922496685628}
+  - component: {fileID: -7358781137542574165}
   m_Layer: 0
   m_Name: Hammer
   m_TagString: Obstacle
@@ -311,3 +312,16 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-7358781137542574165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6934473257679711482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab2f509c76c624ead882c02e0b717f7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _player: {fileID: 0}

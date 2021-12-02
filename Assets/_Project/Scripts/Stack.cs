@@ -17,10 +17,26 @@ public class Stack : MonoBehaviour
 
     private void Update()
     {
-        if (GameManager.Instance.CurrentGameState == GameState.LoseGame && !_isGameLose)
+        switch (GameManager.Instance.CurrentGameState)
         {
-            _isGameLose = true;
-            AnimationManager.Instance.DeathAnimation(_animator);
+            case GameState.PrepareGame:
+                break;
+            case GameState.MainGame:
+                break;
+            case GameState.LoseGame:
+                if (!_isGameLose)
+                {
+                    _isGameLose = true;
+                    AnimationManager.Instance.DeathAnimation(_animator);
+                }
+
+                break;
+            case GameState.WinGame:
+                AnimationManager.Instance.WinAnimation(_animator);
+                gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
         }
     }
 

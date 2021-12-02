@@ -106,6 +106,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3087933762776332583}
   - component: {fileID: 3265164811887456936}
+  - component: {fileID: 4204846900831146678}
   m_Layer: 0
   m_Name: Patrol Saw
   m_TagString: Obstacle
@@ -148,6 +149,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &4204846900831146678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2418815394099209117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab2f509c76c624ead882c02e0b717f7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _player: {fileID: 0}
 --- !u!1 &6899803469759025272
 GameObject:
   m_ObjectHideFlags: 0

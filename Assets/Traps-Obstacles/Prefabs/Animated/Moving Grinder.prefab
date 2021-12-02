@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 392193768345248605}
   - component: {fileID: 2492088658644424599}
   - component: {fileID: 3842758846701173448}
+  - component: {fileID: -6389744810573239527}
   m_Layer: 0
   m_Name: Moving Grinder
   m_TagString: Obstacle
@@ -103,6 +104,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-6389744810573239527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4149311822491055682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab2f509c76c624ead882c02e0b717f7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _player: {fileID: 0}
 --- !u!1 &5583078540970330736
 GameObject:
   m_ObjectHideFlags: 0

@@ -269,6 +269,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7007746961113871812}
   - component: {fileID: 7406800460945882355}
+  - component: {fileID: 802371393103781293}
   m_Layer: 0
   m_Name: Swing-Mace
   m_TagString: Obstacle
@@ -311,3 +312,16 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &802371393103781293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7641293651057028990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab2f509c76c624ead882c02e0b717f7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _player: {fileID: 0}
