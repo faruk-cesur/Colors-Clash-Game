@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
     private bool _isPlayerInteract;
     private bool _isFirstLineCreated;
     private bool _isPlayerWin;
+    private bool _isPlayerDead;
 
     private float _newLinePositionX = -0.7f;
     private float _newLinePositionZ = -2f;
@@ -54,7 +55,6 @@ public class PlayerController : MonoBehaviour
             case GameState.LoseGame:
                 break;
             case GameState.WinGame:
-                AnimationManager.Instance.WinAnimation(_animator);
                 _playerModelStickman.transform.rotation = Quaternion.Euler(0, 180, 0);
                 break;
             default:
@@ -220,59 +220,52 @@ public class PlayerController : MonoBehaviour
 
             NextStackPosition();
         }
-        
+
         if (other.CompareTag("Win"))
         {
             _isPlayerWin = true;
-            print("Win Finish");
         }
-        
+
         if (other.CompareTag("X1"))
         {
             UIManager.Instance.gold *= 1;
             other.gameObject.GetComponent<Collider>().enabled = false;
-            print("X1");
         }
-        
+
         if (other.CompareTag("X2"))
         {
             UIManager.Instance.gold *= 2;
             other.gameObject.GetComponent<Collider>().enabled = false;
-            print("X2");
         }
-        
+
         if (other.CompareTag("X4"))
         {
             UIManager.Instance.gold /= 2;
             UIManager.Instance.gold *= 4;
             other.gameObject.GetComponent<Collider>().enabled = false;
-            print("X4");
         }
-        
+
         if (other.CompareTag("X6"))
         {
             UIManager.Instance.gold /= 4;
             UIManager.Instance.gold *= 6;
             other.gameObject.GetComponent<Collider>().enabled = false;
-            print("X6");
         }
-        
+
         if (other.CompareTag("X8"))
         {
             UIManager.Instance.gold /= 6;
             UIManager.Instance.gold *= 8;
             other.gameObject.GetComponent<Collider>().enabled = false;
-            print("X8");
         }
-        
+
         if (other.CompareTag("X10"))
         {
             UIManager.Instance.gold /= 8;
             UIManager.Instance.gold *= 10;
             other.gameObject.GetComponent<Collider>().enabled = false;
-            print("X10");
         }
-        
+
         if (stackGameObjectList.Count == 0)
         {
             return;
@@ -305,14 +298,29 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        if (!_isPlayerWin && other.gameObject.CompareTag("CubeRed") || other.gameObject.CompareTag("CubeGreen") || other.gameObject.CompareTag("CubeBlue") || other.gameObject.CompareTag("CubeYellow"))
+        if (!_isPlayerWin && !_isPlayerDead && (other.gameObject.CompareTag("CubeRed") || other.gameObject.CompareTag("CubeGreen") || other.gameObject.CompareTag("CubeBlue") ||
+                                                other.gameObject.CompareTag("CubeYellow")))
         {
+            _isPlayerDead = true;
+            gameObject.GetComponentInChildren<Animator>().applyRootMotion = true;
             PlayerDeath();
+            print("!playerwin");
         }
-        
-        if (_isPlayerWin && other.gameObject.CompareTag("CubeRed") || other.gameObject.CompareTag("CubeGreen") || other.gameObject.CompareTag("CubeBlue") || other.gameObject.CompareTag("CubeYellow"))
+
+        if (_isPlayerWin && (other.gameObject.CompareTag("CubeRed") || other.gameObject.CompareTag("CubeGreen") || other.gameObject.CompareTag("CubeBlue") ||
+                             other.gameObject.CompareTag("CubeYellow")))
         {
             _runSpeed = 0;
+            gameObject.GetComponentInChildren<Animator>().applyRootMotion = true;
+            AnimationManager.Instance.WinAnimation(_animator);
+            PlayerWinCondition();
+            print("Playerwin");
+        }
+
+        if (other.gameObject.CompareTag("Win"))
+        {
+            _runSpeed = 0;
+            gameObject.GetComponentInChildren<Animator>().applyRootMotion = true;
             AnimationManager.Instance.WinAnimation(_animator);
             PlayerWinCondition();
         }
@@ -359,7 +367,6 @@ public class PlayerController : MonoBehaviour
         _currentLinePositionX += 0.7f;
 
         CameraManager.Instance.mainGameCam.GetComponent<CinemachineVirtualCamera>().m_Lens.FieldOfView += 0.2f;
-        UIManager.Instance.gold++;
 
         if (_stackNumber == 3 && !_isFirstLineCreated)
         {
@@ -388,7 +395,7 @@ public class PlayerController : MonoBehaviour
         AnimationManager.Instance.DeathAnimation(_animator);
         GameManager.Instance.LoseGame();
     }
-    
+
     private void PlayerWinCondition()
     {
         if (_runSpeed == 0 && _isPlayerWin)
@@ -396,7 +403,7 @@ public class PlayerController : MonoBehaviour
             GameManager.Instance.WinGame();
         }
     }
-    
+
     private IEnumerator PlayerScaleCountDown(GameObject stackPlayer)
     {
         yield return new WaitForSeconds(0.10f);

@@ -73,6 +73,7 @@ public class Stack : MonoBehaviour
             StackDestroyCube(player, other);
             gameObject.GetComponent<Animator>().applyRootMotion = true;
             AnimationManager.Instance.KickAnimation(_animator);
+            UIManager.Instance.gold++;
         }
 
         if (other.CompareTag("CubeGreen") && gameObject.CompareTag("StackGreen") && !_onTarget)
@@ -84,6 +85,7 @@ public class Stack : MonoBehaviour
             StackDestroyCube(player, other);
             gameObject.GetComponent<Animator>().applyRootMotion = true;
             AnimationManager.Instance.KickAnimation(_animator);
+            UIManager.Instance.gold++;
         }
 
         if (other.CompareTag("CubeBlue") && gameObject.CompareTag("StackBlue") && !_onTarget)
@@ -95,6 +97,7 @@ public class Stack : MonoBehaviour
             StackDestroyCube(player, other);
             gameObject.GetComponent<Animator>().applyRootMotion = true;
             AnimationManager.Instance.KickAnimation(_animator);
+            UIManager.Instance.gold++;
         }
 
         if (other.CompareTag("CubeYellow") && gameObject.CompareTag("StackYellow") && !_onTarget)
@@ -106,6 +109,7 @@ public class Stack : MonoBehaviour
             StackDestroyCube(player, other);
             gameObject.GetComponent<Animator>().applyRootMotion = true;
             AnimationManager.Instance.KickAnimation(_animator);
+            UIManager.Instance.gold++;
         }
     }
 
