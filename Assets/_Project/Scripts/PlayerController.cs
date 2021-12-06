@@ -310,7 +310,6 @@ public class PlayerController : MonoBehaviour
             _isPlayerDead = true;
             gameObject.GetComponentInChildren<Animator>().applyRootMotion = true;
             PlayerDeath();
-            print("!playerwin");
         }
 
         if (_isPlayerWin && (other.gameObject.CompareTag("CubeRed") || other.gameObject.CompareTag("CubeGreen") || other.gameObject.CompareTag("CubeBlue") ||
@@ -320,7 +319,6 @@ public class PlayerController : MonoBehaviour
             gameObject.GetComponentInChildren<Animator>().applyRootMotion = true;
             AnimationManager.Instance.WinAnimation(_animator);
             PlayerWinCondition();
-            print("Playerwin");
         }
 
         if (other.gameObject.CompareTag("Win"))

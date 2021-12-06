@@ -74,7 +74,7 @@ public class GameManager : MonoBehaviour
     public void LoseGame()
     {
         StartCoroutine(UIManager.Instance.DurationLoseGameUI());
-        StartCoroutine(SoundManager.Instance.LoseGameSound());
+        //StartCoroutine(SoundManager.Instance.LoseGameSound());
         CameraManager.Instance.LoseGameCamera();
         CurrentGameState = GameState.LoseGame;
     }
@@ -83,7 +83,7 @@ public class GameManager : MonoBehaviour
     {
         StartCoroutine(UIManager.Instance.DurationWinGameUI());
         CameraManager.Instance.WinGameCamera();
-        SoundManager.Instance.PlaySound(SoundManager.Instance.winGameSound, 1);
+        //SoundManager.Instance.PlaySound(SoundManager.Instance.winGameSound, 1);
         CurrentGameState = GameState.WinGame;
     }
 }

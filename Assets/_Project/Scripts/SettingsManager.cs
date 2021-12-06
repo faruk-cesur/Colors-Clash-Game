@@ -84,11 +84,11 @@ public class SettingsManager : MonoBehaviour
     {
         if (sliderAudio.value == 0) // Setting Audio ON or OFF
         {
-            SoundManager.Instance.audioSource.mute = true;
+            //SoundManager.Instance.audioSource.mute = true;
         }
         else
         {
-            SoundManager.Instance.audioSource.mute = false;
+            //SoundManager.Instance.audioSource.mute = false;
         }
     }
 }

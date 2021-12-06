@@ -134,7 +134,7 @@ public class UIManager : MonoBehaviour
     {
         //SoundManager.Instance.PlaySound(SoundManager.Instance.hitHeadSound, 1f);
         yield return new WaitForSeconds(3f);
-        SoundManager.Instance.PlaySound(SoundManager.Instance.loseGameSound, 1f);
+        //SoundManager.Instance.PlaySound(SoundManager.Instance.loseGameSound, 1f);
         LoseGameUI();
     }
 
