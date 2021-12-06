@@ -229,12 +229,14 @@ public class PlayerController : MonoBehaviour
         if (other.CompareTag("X1"))
         {
             UIManager.Instance.gold *= 1;
+            UIManager.Instance.getGoldText.text = "GET X1";
             other.gameObject.GetComponent<Collider>().enabled = false;
         }
 
         if (other.CompareTag("X2"))
         {
             UIManager.Instance.gold *= 2;
+            UIManager.Instance.getGoldText.text = "GET X2";
             other.gameObject.GetComponent<Collider>().enabled = false;
         }
 
@@ -242,6 +244,7 @@ public class PlayerController : MonoBehaviour
         {
             UIManager.Instance.gold /= 2;
             UIManager.Instance.gold *= 4;
+            UIManager.Instance.getGoldText.text = "GET X4";
             other.gameObject.GetComponent<Collider>().enabled = false;
         }
 
@@ -249,6 +252,7 @@ public class PlayerController : MonoBehaviour
         {
             UIManager.Instance.gold /= 4;
             UIManager.Instance.gold *= 6;
+            UIManager.Instance.getGoldText.text = "GET X6";
             other.gameObject.GetComponent<Collider>().enabled = false;
         }
 
@@ -256,6 +260,7 @@ public class PlayerController : MonoBehaviour
         {
             UIManager.Instance.gold /= 6;
             UIManager.Instance.gold *= 8;
+            UIManager.Instance.getGoldText.text = "GET X8";
             other.gameObject.GetComponent<Collider>().enabled = false;
         }
 
@@ -263,6 +268,7 @@ public class PlayerController : MonoBehaviour
         {
             UIManager.Instance.gold /= 8;
             UIManager.Instance.gold *= 10;
+            UIManager.Instance.getGoldText.text = "GET X10";
             other.gameObject.GetComponent<Collider>().enabled = false;
         }
 

@@ -22,6 +22,7 @@ public class UIManager : MonoBehaviour
         earnedGoldText,
         earnedExtraGoldText,
         getExtraGoldText,
+        getGoldText,
         prepareTotalGoldText,
         winTotalGoldText,
         sliderLevelText;

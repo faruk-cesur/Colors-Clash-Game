@@ -37590,6 +37590,7 @@ MonoBehaviour:
   earnedGoldText: {fileID: 6305386953203959453}
   earnedExtraGoldText: {fileID: 636710729745379561}
   getExtraGoldText: {fileID: 636710731741691254}
+  getGoldText: {fileID: 636710729871693915}
   prepareTotalGoldText: {fileID: 636710730953006312}
   winTotalGoldText: {fileID: 636710731395171920}
   sliderLevelText: {fileID: 1780559144937849076}
